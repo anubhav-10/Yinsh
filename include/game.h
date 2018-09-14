@@ -27,6 +27,9 @@ class game{
 		pair<int,int> getN3(int x,int y);
 		pair<int,int> getN4(int x,int y);
 		pair<int,int> getN5(int x,int y);
+
+		vector<moves> getValidN0(int sx,int sy);
+		vector<moves> checkRun(int player);
 		void print();
 };
 

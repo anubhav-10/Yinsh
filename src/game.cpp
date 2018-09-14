@@ -138,7 +138,7 @@ void game::removeRun(int sx,int sy,int ex,int ey){
 }
 
 vector<moves> game::validMoves(int player){
-	vector<moves> v;
+	vector<moves> ans;
 	if(player==1){
 		// place a ring
 		if(white.size()<5){
@@ -149,11 +149,21 @@ vector<moves> game::validMoves(int player){
 						m.type=Place;
 						m.coord.pb(i);
 						m.coord.pb(j);
+						ans.pb(m);
 					}
-			}	
+			}
+			return ans;
 		}
+		// check for a run
+
 		// move a ring
-		
+	 	for(int i=0;i<5;i++){
+			pair<int,int> ring=white[i];
+			int x,y,sx,sy;
+			sx=ring.first; sy=ring.second;
+			vector<moves> v=getValidN0(sx,sy);
+			ans.insert(ans.end(),v.begin(),v.end());
+ 		}
  	}
 }
 
@@ -412,4 +422,67 @@ void game::print(){
 
 void game::placeMarker(int x,int y,int e){
 	state[x][y]=e;
+}
+
+vector<moves> game::getValidN0(int sx,int sy){
+	vector<moves> v;
+	// up
+	int x,y;	
+	x=sx;y=sy;
+	pair<int,int> next=getN0(x,y);
+	x=next.first; y=next.second;
+	while(state[x][y]!=-1){
+		bool b=0;
+		if(state[x][y]==0){
+			moves m;
+			m.type=Move;
+			m.coord.pb(sx);
+			m.coord.pb(sy);
+			m.coord.pb(x);
+			m.coord.pb(y);
+			v.pb(m);
+		}
+		else if(state[x][y]==1 || state[x][y]==2 || state[x][y]==-1)
+			break;
+		else {
+			next=getN0(x,y);
+			x=next.first; y=next.second;
+			while(state[x][y]!=-1){
+				if(state[x][y]==0){
+					moves m;
+					m.type=Move;
+					m.coord.pb(sx);
+					m.coord.pb(sy);
+					m.coord.pb(x);
+					m.coord.pb(y);
+					v.pb(m);
+					b=1;
+					break;
+				}
+				if(state[x][y]==-1 || state[x][y]==1 || state[x][y]==2){
+					b=1;
+					break;
+				}
+				next=getN0(x,y);
+				x=next.first; y=next.second;		
+			}
+		}
+		if(b) break;
+		next=getN0(x,y);
+		x=next.first; y=next.second;
+	}
+	return v;	
+}
+
+vector<moves> getRun(int player){
+	int c=(player==1)?3:4;
+	vector<moves> v;
+	// Down
+	for(int i=1;i<=4){
+		int sx=5,int sy=i;
+		int l=0;
+		while()
+	}
+
+	return v;
 }
