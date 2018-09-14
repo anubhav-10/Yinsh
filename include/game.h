@@ -16,19 +16,24 @@ class game{
 		void removeRing(int x,int y);
 		void moveRing(int sx,int sy,int ex,int ey); 
 		void removeRun(int sx,int sy,int ex,int ey); // for executing opponent's move
-		vector<moves> validMoves(int player);		
 		// Auxiliary functions
 		void flip(int sx,int sy,int ex,int ey,int direction);
 		int getDirection(int sx,int sy,int ex,int ey);
-		int getAxis(int x,int y); // get axis or region
-		pair<int,int> getN0(int x,int y);
-		pair<int,int> getN1(int x,int y);
-		pair<int,int> getN2(int x,int y);
-		pair<int,int> getN3(int x,int y);
-		pair<int,int> getN4(int x,int y);
-		pair<int,int> getN5(int x,int y);
-
-		vector<moves> getValidN0(int sx,int sy);
+		int getRegion(int x,int y); // get axis or region
+		pair<int,int> get0(int x,int y);
+		pair<int,int> get1(int x,int y);
+		pair<int,int> get2(int x,int y);
+		pair<int,int> get3(int x,int y);
+		pair<int,int> get4(int x,int y);
+		pair<int,int> get5(int x,int y);
+		// valid moves
+		vector<moves> validMoves(int player);		
+		vector<moves> getValid0(int sx,int sy);
+		vector<moves> getValid1(int sx,int sy);
+		vector<moves> getValid2(int sx,int sy);
+		vector<moves> getValid3(int sx,int sy);
+		vector<moves> getValid4(int sx,int sy);
+		vector<moves> getValid5(int sx,int sy);
 		vector<moves> getRunDown(int player);
 		void print();
 };
