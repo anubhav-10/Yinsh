@@ -505,6 +505,7 @@ vector<moves> game::getRunDown(int player){
 					pair<int,int> p=getN3(x,y);
 					x=p.first; y=p.second;
 				}
+				if(state[x][y]==-1) break;
 			}
 			pair<int,int> p=getN3(x,y);
 			x=p.first; y=p.second;

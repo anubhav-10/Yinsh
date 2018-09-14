@@ -15,14 +15,23 @@ int main(int argc, char const *argv[])
 	g.placeMarker(4,3,4);
 	g.insertRing(3,5,1);
 
-	// vector<moves> ans=g.validMoves(1);
-	// for(int i=0;i<ans.size();i++){
-	// 	cout<<ans[i].type<<endl;
-	// 	for(int j=0;j<ans[i].coord.size();j++){
-	// 		cout<<ans[i].coord[j]<<" ";
-	// 	}
-	// 	cout<<endl;
-	// }
+	g.placeMarker(5,4,3);
+	g.placeMarker(4,4,3);
+	g.placeMarker(4,5,3);
+	g.placeMarker(4,6,3);
+	g.placeMarker(4,7,3);
+	g.placeMarker(4,8,3);
+	g.placeMarker(5,11,3);
+
+
+	vector<moves> ans=g.getRunDown(1);
+	for(int i=0;i<ans.size();i++){
+		cout<<ans[i].type<<endl;
+		for(int j=0;j<ans[i].coord.size();j++){
+			cout<<ans[i].coord[j]<<" ";
+		}
+		cout<<endl;
+	}
 
 	// g.print();
 	// g.moveRing(1,5,0,0);
