@@ -352,11 +352,23 @@ vector<moves> game::getValid5(int sx,int sy){
 }
 
 vector<moves> game::getRunDown(int player){
+	vector<moves> ans,v;
+	// Down
+	ans=getRunDownUtil(player,5,1,4);
+	v=getRunDownUtil(player,5,26,29);
+	ans.insert(ans.end(),v.begin(),v.end());
+	v=getRunDownUtil(player,4,0,0);
+	ans.insert(ans.end(),v.begin(),v.end());
+
+	return ans;
+}
+
+vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 	int c=(player==1)?3:4;
 	vector<moves> v;
 	// Down
-	for(int i=1;i<=4;i++){
-		int sx=5,sy=i,x,y;
+	for(int i=a;i<=b;i++){
+		int sx=startx,sy=i,x,y;
 		int l=0;
 		x=sx;y=sy;
 		while(state[x][y]!=-1){
@@ -384,10 +396,119 @@ vector<moves> game::getRunDown(int player){
 				}
 				if(state[x][y]==-1) break;
 			}
+			pair<int,int> temp=get3(sx,sy);
+			sx=temp.first; sy=temp.second;
 			pair<int,int> p=get3(x,y);
 			x=p.first; y=p.second;
 		}
 	}
+	return v;
+}
 
+vector<moves> game::getRunSE(int player){
+	vector<moves> ans,v;
+	// SE
+	ans=getRunSEUtil(player,5,21,24);
+	v=getRunSEUtil(player,5,26,29);
+	ans.insert(ans.end(),v.begin(),v.end());
+	v=getRunSEUtil(player,4,20,20);
+	ans.insert(ans.end(),v.begin(),v.end());
+
+	return ans;
+}
+
+vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
+	int c=(player==1)?3:4;
+	vector<moves> v;
+	// SE
+	for(int i=a;i<=b;i++){
+		int sx=startx,sy=i,x,y;
+		int l=0;
+		x=sx;y=sy;
+		while(state[x][y]!=-1){
+			if(state[x][y]==c){
+				l=1;
+				pair<int,int> p=get2(x,y);
+				x=p.first; y=p.second;
+				while(state[x][y]==c){
+					l++;
+					if(l==5){
+						// add in vector
+						moves m;
+						m.type = RemoveRun;
+						m.coord.pb(sx);
+						m.coord.pb(sy);
+						m.coord.pb(x);
+						m.coord.pb(y);
+						v.pb(m);
+						l=4;
+						pair<int,int> temp=get2(sx,sy);
+						sx=temp.first; sy=temp.second;
+					}
+					pair<int,int> p=get2(x,y);
+					x=p.first; y=p.second;
+				}
+				if(state[x][y]==-1) break;
+			}
+			pair<int,int> temp=get2(sx,sy);
+			sx=temp.first; sy=temp.second;
+			pair<int,int> p=get2(x,y);
+			x=p.first; y=p.second;
+		}
+	}
+	return v;
+}
+
+vector<moves> game::getRunSW(int player){
+	vector<moves> ans,v;
+	// SW
+	ans=getRunSWUtil(player,5,1,4);
+	v=getRunSWUtil(player,5,6,9);
+	ans.insert(ans.end(),v.begin(),v.end());
+	v=getRunSWUtil(player,4,4,4);
+	ans.insert(ans.end(),v.begin(),v.end());
+
+	return ans;
+}
+
+vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
+	int c=(player==1)?3:4;
+	vector<moves> v;
+	// SE
+	for(int i=a;i<=b;i++){
+		int sx=startx,sy=i,x,y;
+		int l=0;
+		x=sx;y=sy;
+		while(state[x][y]!=-1){
+			if(state[x][y]==c){
+				l=1;
+				pair<int,int> p=get4(x,y);
+				x=p.first; y=p.second;
+				while(state[x][y]==c){
+					l++;
+					if(l==5){
+						// add in vector
+						moves m;
+						m.type = RemoveRun;
+						m.coord.pb(sx);
+						m.coord.pb(sy);
+						m.coord.pb(x);
+						m.coord.pb(y);
+						v.pb(m);
+						l=4;
+						pair<int,int> temp=get4(sx,sy);
+						sx=temp.first; sy=temp.second;
+					}
+					pair<int,int> p=get4(x,y);
+					x=p.first; y=p.second;
+				}
+				if(state[x][y]==-1) break;
+			}
+			pair<int,int> temp=get4(sx,sy);
+			sx=temp.first; sy=temp.second;
+			pair<int,int> p=get4(x,y);
+			x=p.first; y=p.second;
+		}
+	}
 	return v;
 }

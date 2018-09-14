@@ -24,7 +24,13 @@ int main(int argc, char const *argv[])
 	g.placeMarker(5,11,3);
 
 
-	vector<moves> ans=g.validMoves(1);
+	g.placeMarker(3,5,3);
+	g.placeMarker(2,4,3);
+	g.placeMarker(2,5,3);
+	g.placeMarker(2,6,3);
+	g.placeMarker(3,10,3);
+
+	vector<moves> ans=g.getRunSW(1);
 	for(int i=0;i<ans.size();i++){
 		cout<<ans[i].type<<endl;
 		for(int j=0;j<ans[i].coord.size();j++){
