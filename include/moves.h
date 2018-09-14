@@ -5,7 +5,7 @@
 #define pb push_back
 using namespace std;
 
-enum MoveType { Place, Move, Remove };
+enum MoveType { Place, Move, RemoveRun };
 struct moves {
 	enum MoveType type;
 	vector<int> coord; // set of coordinates for different moves;

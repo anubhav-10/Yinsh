@@ -474,14 +474,41 @@ vector<moves> game::getValidN0(int sx,int sy){
 	return v;	
 }
 
-vector<moves> getRun(int player){
+vector<moves> game::getRunDown(int player){
 	int c=(player==1)?3:4;
 	vector<moves> v;
 	// Down
-	for(int i=1;i<=4){
-		int sx=5,int sy=i;
+	for(int i=1;i<=4;i++){
+		int sx=5,sy=i,x,y;
 		int l=0;
-		while()
+		x=sx;y=sy;
+		while(state[x][y]!=-1){
+			if(state[x][y]==c){
+				l=1;
+				pair<int,int> p=getN3(x,y);
+				x=p.first; y=p.second;
+				while(state[x][y]==c){
+					l++;
+					if(l==5){
+						// add in vector
+						moves m;
+						m.type = RemoveRun;
+						m.coord.pb(sx);
+						m.coord.pb(sy);
+						m.coord.pb(x);
+						m.coord.pb(y);
+						v.pb(m);
+						l=4;
+						pair<int,int> temp=getN3(sx,sy);
+						sx=temp.first; sy=temp.second;
+					}
+					pair<int,int> p=getN3(x,y);
+					x=p.first; y=p.second;
+				}
+			}
+			pair<int,int> p=getN3(x,y);
+			x=p.first; y=p.second;
+		}
 	}
 
 	return v;
