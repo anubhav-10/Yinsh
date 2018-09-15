@@ -40,7 +40,7 @@ class game{
 		vector<moves> getRunSEUtil(int player,int startx,int a,int b);
 		vector<moves> getRunSW(int player);
 		vector<moves> getRunSWUtil(int player,int startx,int a,int b);
-			void print();
+		void print();
 };
 
 #endif
