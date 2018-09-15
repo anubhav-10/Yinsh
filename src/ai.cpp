@@ -47,7 +47,7 @@ double AI::utility(int player){
 	return (player==1)?score:(10-score);
 }
 
-vector<moves> AI::makeDecision(){
+vector<moves> AI::makeDecision(game g){
 	double resultValue=INT_MIN;
 	vector<moves> result;
 	allvalidmoves p;
@@ -60,8 +60,8 @@ vector<moves> AI::makeDecision(){
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],id);
 		}
-		double value=minValue(INT_MIN,numeric_limits<double>::max(),1);
-		// cout<<value<<endl;
+		double value=maxValue(b,INT_MIN,numeric_limits<double>::max(),2);
+		// cerr<<value<<endl;
 		if(value > resultValue){
 			resultValue = value;
 			result = p.allMoves[i];
@@ -72,13 +72,13 @@ vector<moves> AI::makeDecision(){
 	return result;
 }
 
-double AI::maxValue(double alpha,double beta,int depth){
+double AI::maxValue(game g,double alpha,double beta,int depth){
 	if(g.terminal() || depth==0)
 		return g.eval(id);
 		// return utility(id);
 
 	double value = INT_MIN;
-	game a = g;
+	// game a = g;
 
 	allvalidmoves p;
 	vector<moves> v;
@@ -94,22 +94,22 @@ double AI::maxValue(double alpha,double beta,int depth){
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],id);
 		}
-		value = max(value,minValue(alpha,beta,depth-1));
-		if(value>=beta)
-			return value;
+		value = max(value,minValue(b,alpha,beta,depth-1));
 		alpha = max(alpha,value);
+		if(alpha>=beta)
+			return value;
 	}
 	return value;
 }
 
-double AI::minValue(double alpha,double beta,int depth){
+double AI::minValue(game g,double alpha,double beta,int depth){
 	if(g.terminal() || depth==0){
 		// return utility(opponent_id);
 		return g.eval(opponent_id);
 	}
 
 	double value = numeric_limits<double>::max();
-	game a = g;
+	// game a = g;
 
 	allvalidmoves p;
 	vector<moves> v;
@@ -127,10 +127,10 @@ double AI::minValue(double alpha,double beta,int depth){
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],opponent_id);
 		}
-		value = min(value,maxValue(alpha,beta,depth-1));
-		if(value<=alpha)
+		value = min(value,maxValue(b,alpha,beta,depth-1));
+		beta = min(beta,value);
+		if(alpha>=beta)
 			return value;
-		alpha = min(alpha,value);
 	}
 	return value;
 }

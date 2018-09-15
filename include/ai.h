@@ -13,13 +13,13 @@ class AI{
 	int id;
 	int opponent_id;
 	public:
-		game g;
+		// game g;
 		AI(int id);
 		int removedRings1,removedRings2;
-		vector<moves> makeDecision();
+		vector<moves> makeDecision(game g);
 		double utility(int player);
-		double maxValue(double alpha,double beta,int depth); 
-		double minValue(double alpha,double beta,int depth);
+		double maxValue(game g,double alpha,double beta,int depth); 
+		double minValue(game g,double alpha,double beta,int depth);
 		void getAllMoves(int player,game g,vector<moves> ans,bool moveMade);
 		bool isTerminal();
 		void print();

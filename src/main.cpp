@@ -193,6 +193,7 @@ int main(int argc, char const *argv[])
 	int id,n,t;
 	cin>>id>>n>>t;
 	cin.ignore();
+	game g;
 	AI player(id);
 	int opponet_id=(id==1)?2:1;
 	// cout<<opponet_id;
@@ -203,11 +204,11 @@ int main(int argc, char const *argv[])
 		getline(cin,move);
 		v=convertToMyMove(move);
 		for(int i=0;i<v.size();i++){
-			player.g.performMove(v[i],opponet_id);
+			g.performMove(v[i],opponet_id);
 		}
 	}
-	while(!player.g.terminal()){
-		vector<moves> v=player.makeDecision();
+	while(!g.terminal()){
+		vector<moves> v=player.makeDecision(g);
 		// cout<<"Ab"<<endl;
 
 		// for(int j=0;j<v.size();j++){
@@ -219,7 +220,7 @@ int main(int argc, char const *argv[])
 		// cout<<v.size();
 		cout<<convertTo(v)<<endl;
 		for(int i=0;i<v.size();i++){
-			player.g.performMove(v[i],id);
+			g.performMove(v[i],id);
 		}
 		// player.g.print();
 
@@ -234,7 +235,7 @@ int main(int argc, char const *argv[])
 			// }
 			// cout<<endl;
 
-			player.g.performMove(v[i],opponet_id);
+			g.performMove(v[i],opponet_id);
 		}
 		// player.g.print();
 	}
