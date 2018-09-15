@@ -34,6 +34,7 @@ class game{
 		vector<moves> getValid3(int sx,int sy);
 		vector<moves> getValid4(int sx,int sy);
 		vector<moves> getValid5(int sx,int sy);
+		vector<moves> getRun(int player);
 		vector<moves> getRunDown(int player);
 		vector<moves> getRunDownUtil(int player,int startx,int a,int b);
 		vector<moves> getRunSE(int player);

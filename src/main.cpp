@@ -34,7 +34,7 @@ int main(int argc, char const *argv[])
 	g.placeMarker(4,14,3);
 	g.placeMarker(5,18,3);
 
-	vector<moves> ans=g.getRunSW(1);
+	vector<moves> ans=g.getRun(1);
 	for(int i=0;i<ans.size();i++){
 		cout<<ans[i].type<<endl;
 		for(int j=0;j<ans[i].coord.size();j++){

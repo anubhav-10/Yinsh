@@ -388,6 +388,17 @@ vector<moves> game::getValid5(int sx,int sy){
 	return v;	
 }
 
+vector<moves> game::getRun(int player){
+	vector<moves> ans,v;
+	ans=getRunDown(player);
+	v=getRunSE(player);
+	ans.insert(ans.end(),v.begin(),v.end());
+	v=getRunSW(player);
+	ans.insert(ans.end(),v.begin(),v.end());
+
+	return ans;
+}
+
 vector<moves> game::getRunDown(int player){
 	vector<moves> ans,v;
 	// Down
