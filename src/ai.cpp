@@ -12,36 +12,38 @@ AI::AI(int id){
 }
 
 double AI::utility(int player){
+	int score=0;
 	if(removedRings1==3 && removedRings2==0)
-		return 10;
+		score = 10;
 	else if(removedRings1==3 && removedRings2==1)
-		return 9;
+		score = 9;
 	else if(removedRings1==3 && removedRings2==2)
-		return 8;
+		score = 8;
 	else if(removedRings1==2 && removedRings2==0)
-		return 7;
+		score = 7;
 	else if(removedRings1==2 && removedRings2==1)
-		return 6;
+		score = 6;
 	else if(removedRings1==1 && removedRings2==0)
-		return 6;
+		score = 6;
 	else if(removedRings1==2 && removedRings2==2)
-		return 5;
+		score = 5;
 	else if(removedRings1==1 && removedRings2==1)
-		return 5;
+		score = 5;
 	else if(removedRings1==0 && removedRings2==0)
-		return 5;
+		score = 5;
 	else if(removedRings1==0 && removedRings2==1)
-		return 4;
+		score = 4;
 	else if(removedRings1==1 && removedRings2==2)
-		return 4;
+		score = 4;
 	else if(removedRings1==0 && removedRings2==2)
-		return 3;
+		score = 3;
 	else if(removedRings1==2 && removedRings2==3)
-		return 2;
+		score = 2;
 	else if(removedRings1==1 && removedRings2==3)
-		return 1;
+		score = 1;
 	else if(removedRings1==0 && removedRings2==3)
-		return 0;
+		score = 0;
+	return (player==1)?score:(10-score);
 }
 
 vector<moves> AI::makeDecision(){
@@ -51,16 +53,17 @@ vector<moves> AI::makeDecision(){
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(id,g,v,0);
-
+	cout<<p.allMoves.size()<<endl;
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],id);
 		}
 		double value=minValue(numeric_limits<double>::min(),numeric_limits<double>::max());
-		if(value > resultValue){
+		if(value >= resultValue){
 			resultValue = value;
 			result = p.allMoves[i];
+			// cout<<p.allMoves[i].size()<<endl;
 		}
 	}
 	return result;
