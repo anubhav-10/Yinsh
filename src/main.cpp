@@ -208,6 +208,7 @@ int main(int argc, char const *argv[])
 	}
 	while(!player.g.terminal()){
 		vector<moves> v=player.makeDecision();
+		// cout<<"Ab"<<endl;
 
 		// for(int j=0;j<v.size();j++){
 		// 	cout<<v[j].type<<" ";
@@ -215,6 +216,7 @@ int main(int argc, char const *argv[])
 		// 		cout<<v[j].coord[k]<<" ";
 		// }
 		// cout<<endl;
+		// cout<<v.size();
 		cout<<convertTo(v)<<endl;
 		for(int i=0;i<v.size();i++){
 			player.g.performMove(v[i],id);

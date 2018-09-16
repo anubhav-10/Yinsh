@@ -1,5 +1,6 @@
 #include <game.h>
 #include <iostream>
+#include <climits>
 #include <ai.h>
 #include <limits>
 using namespace std;
@@ -47,7 +48,7 @@ double AI::utility(int player){
 }
 
 vector<moves> AI::makeDecision(){
-	double resultValue=numeric_limits<double>::min();
+	double resultValue=INT_MIN;
 	vector<moves> result;
 	allvalidmoves p;
 	vector<moves> v;
@@ -59,21 +60,24 @@ vector<moves> AI::makeDecision(){
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],id);
 		}
-		double value=minValue(numeric_limits<double>::min(),numeric_limits<double>::max());
-		if(value >= resultValue){
+		double value=minValue(INT_MIN,numeric_limits<double>::max(),1);
+		// cout<<value<<endl;
+		if(value > resultValue){
 			resultValue = value;
 			result = p.allMoves[i];
 			// cout<<p.allMoves[i].size()<<endl;
 		}
 	}
+	// cout<<result.size()<<endl;
 	return result;
 }
 
-double AI::maxValue(double alpha,double beta){
-	if(g.terminal())
+double AI::maxValue(double alpha,double beta,int depth){
+	if(g.terminal() || depth==0)
 		return g.eval();
+		// return utility(id);
 
-	double value = numeric_limits<double>::min();
+	double value = INT_MIN;
 	game a = g;
 
 	allvalidmoves p;
@@ -83,13 +87,14 @@ double AI::maxValue(double alpha,double beta){
 	// getAllMoves(id,a,v,0);
 	if(p.allMoves.size()==0)
 		return g.eval();
+		// return utility(id);
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],id);
 		}
-		value = max(value,minValue(alpha,beta));
+		value = max(value,minValue(alpha,beta,depth-1));
 		if(value>=beta)
 			return value;
 		alpha = max(alpha,value);
@@ -97,9 +102,11 @@ double AI::maxValue(double alpha,double beta){
 	return value;
 }
 
-double AI::minValue(double alpha,double beta){
-	if(g.terminal())
+double AI::minValue(double alpha,double beta,int depth){
+	if(g.terminal() || depth==0){
+		// return utility(opponent_id);
 		return g.eval();
+	}
 
 	double value = numeric_limits<double>::max();
 	game a = g;
@@ -111,8 +118,8 @@ double AI::minValue(double alpha,double beta){
 
 	// cout<<p.allMoves.size()<<endl;
 	if(p.allMoves.size()==0){
-		cout<<"abc";
 		return g.eval();
+		// return utility(opponent_id);
 	}
 
 	for(int i=0;i<p.allMoves.size();i++){
@@ -120,7 +127,7 @@ double AI::minValue(double alpha,double beta){
 		for(int j=0;j<p.allMoves[i].size();j++){
 			b.performMove(p.allMoves[i][j],opponent_id);
 		}
-		value = min(value,maxValue(alpha,beta));
+		value = min(value,maxValue(alpha,beta,depth-1));
 		if(value<=alpha)
 			return value;
 		alpha = min(alpha,value);

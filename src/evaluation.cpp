@@ -139,8 +139,9 @@ double game::markerScoreSWUtil(int player,int startx,int a,int b){
 double game::flippedScore(int player){
 	double flipped_score = 0;
 	if(player==1){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<white.size();i++){
 			if(white[i]!=make_pair(-1,-1)){
+				// cout<<"Ab"<<endl;
 				int x = white[i].first;
 				int y = white[i].second;
 				flipped_score += flippedUtilUP(1,x,y);
@@ -153,7 +154,7 @@ double game::flippedScore(int player){
 		}
 	}
 	else{
-		for(int i=0;i<5;i++){
+		for(int i=0;i<black.size();i++){
 			if(black[i]!=make_pair(-1,-1)){
 				int x = black[i].first;
 				int y = black[i].second;
@@ -304,7 +305,7 @@ double game::countMarkers(int player){
 double game::mobilityScore(int player){
 	double mobility_score = 0;
 	if(player==1){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<white.size();i++){
 			if(white[i]!=make_pair(-1,-1)){
 				int x = white[i].first;
 				int y = white[i].second;
@@ -316,6 +317,20 @@ double game::mobilityScore(int player){
 				mobility_score += mobilityUtilNW(player,x,y);
 			}
 		}
+	}
+	else{
+		for(int i=0;i<black.size();i++){
+			if(black[i]!=make_pair(-1,-1)){
+				int x = black[i].first;
+				int y = black[i].second;
+				mobility_score += mobilityUtilUP(player,x,y);
+				mobility_score += mobilityUtilDown(player,x,y);
+				mobility_score += mobilityUtilSE(player,x,y);
+				mobility_score += mobilityUtilSW(player,x,y);
+				mobility_score += mobilityUtilNE(player,x,y);
+				mobility_score += mobilityUtilNW(player,x,y);
+			}
+		}		
 	}
 	return mobility_score;
 }
@@ -467,6 +482,7 @@ double game::eval(){
 
 	double flip_w_markers = flippedScore(1);
 	double flip_b_markers = flippedScore(2);
+				// cout<<"Ab"<<endl;
 
 	double mobility_w_ring = mobilityScore(1);
 	double mobility_b_ring = mobilityScore(2);

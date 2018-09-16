@@ -18,8 +18,8 @@ class AI{
 		int removedRings1,removedRings2;
 		vector<moves> makeDecision();
 		double utility(int player);
-		double maxValue(double alpha,double beta); 
-		double minValue(double alpha,double beta);
+		double maxValue(double alpha,double beta,int depth); 
+		double minValue(double alpha,double beta,int depth);
 		void getAllMoves(int player,game g,vector<moves> ans,bool moveMade);
 		bool isTerminal();
 		void print();
