@@ -472,27 +472,14 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-					}
-					if(l>5){
+						l=4;
 						pair<int,int> temp=get3(sx,sy);
-						sx=temp.first; sy=temp.second;						
+						sx=temp.first; sy=temp.second;
 					}
 					pair<int,int> p=get3(x,y);
 					x=p.first; y=p.second;
 				}
-				if(l>5){
-					moves m;
-					m.type = RemoveRun;
-					m.coord.pb(sx);
-					m.coord.pb(sy);
-					pair<int,int> temp=get0(x,y);
-					m.coord.pb(temp.first);
-					m.coord.pb(temp.second);
-					v.pb(m);
-				}
-				if(state[x][y]==-1) {
-					break;
-				}
+				if(state[x][y]==-1) break;
 			}
 			pair<int,int> temp=get3(sx,sy);
 			sx=temp.first; sy=temp.second;
@@ -502,7 +489,6 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 	}
 	return v;
 }
-
 vector<moves> game::getRunSE(int player){
 	vector<moves> ans,v;
 	// SE
@@ -518,7 +504,7 @@ vector<moves> game::getRunSE(int player){
 vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 	int c=(player==1)?3:4;
 	vector<moves> v;
-	// Down
+	// SE
 	for(int i=a;i<=b;i++){
 		int sx=startx,sy=i,x,y;
 		int l=0;
@@ -539,27 +525,14 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-					}
-					if(l>5){
+						l=4;
 						pair<int,int> temp=get2(sx,sy);
-						sx=temp.first; sy=temp.second;						
+						sx=temp.first; sy=temp.second;
 					}
 					pair<int,int> p=get2(x,y);
 					x=p.first; y=p.second;
 				}
-				if(l>5){
-					moves m;
-					m.type = RemoveRun;
-					m.coord.pb(sx);
-					m.coord.pb(sy);
-					pair<int,int> temp=get5(x,y);
-					m.coord.pb(temp.first);
-					m.coord.pb(temp.second);
-					v.pb(m);
-				}
-				if(state[x][y]==-1) {
-					break;
-				}
+				if(state[x][y]==-1) break;
 			}
 			pair<int,int> temp=get2(sx,sy);
 			sx=temp.first; sy=temp.second;
@@ -569,7 +542,6 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 	}
 	return v;
 }
-
 vector<moves> game::getRunSW(int player){
 	vector<moves> ans,v;
 	// SW
@@ -585,7 +557,7 @@ vector<moves> game::getRunSW(int player){
 vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
 	int c=(player==1)?3:4;
 	vector<moves> v;
-	// Down
+	// SE
 	for(int i=a;i<=b;i++){
 		int sx=startx,sy=i,x,y;
 		int l=0;
@@ -606,27 +578,14 @@ vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-					}
-					if(l>5){
+						l=4;
 						pair<int,int> temp=get4(sx,sy);
-						sx=temp.first; sy=temp.second;						
+						sx=temp.first; sy=temp.second;
 					}
 					pair<int,int> p=get4(x,y);
 					x=p.first; y=p.second;
 				}
-				if(l>5){
-					moves m;
-					m.type = RemoveRun;
-					m.coord.pb(sx);
-					m.coord.pb(sy);
-					pair<int,int> temp=get1(x,y);
-					m.coord.pb(temp.first);
-					m.coord.pb(temp.second);
-					v.pb(m);
-				}
-				if(state[x][y]==-1) {
-					break;
-				}
+				if(state[x][y]==-1) break;
 			}
 			pair<int,int> temp=get4(sx,sy);
 			sx=temp.first; sy=temp.second;

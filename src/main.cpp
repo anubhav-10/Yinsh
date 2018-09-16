@@ -80,7 +80,7 @@ string convertTo(vector<moves> v){
 			result+="S ";
 			result+=to_string(m.coord[0])+" ";
 			result+=to_string(m.coord[1])+" ";
-			result+="P ";
+			result+="M ";
 			result+=to_string(m.coord[2])+" ";
 			result+=to_string(m.coord[3])+" ";
 		}
