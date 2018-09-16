@@ -15,6 +15,7 @@ vector<moves> game::validMoves(int player){
 						m.coord.pb(i);
 						m.coord.pb(j);
 						ans.pb(m);
+						break;
 					}
 			}
 			return ans;
@@ -22,10 +23,11 @@ vector<moves> game::validMoves(int player){
 		// check for a run
 
 		// move a ring
-	 	for(int i=0;i<1;i++){
+	 	for(int i=0;i<5;i++){
 			pair<int,int> ring=white[i];
 			int x,y,sx,sy;
 			sx=ring.first; sy=ring.second;
+			if(sx==-1 && sy==-1) continue;
 			vector<moves> v;
 			v=getValid0(sx,sy);
 			ans.insert(ans.end(),v.begin(),v.end());
@@ -52,6 +54,7 @@ vector<moves> game::validMoves(int player){
 						m.coord.pb(i);
 						m.coord.pb(j);
 						ans.pb(m);
+						break;
 					}
 			}
 			return ans;
@@ -59,10 +62,11 @@ vector<moves> game::validMoves(int player){
 		// check for a run
 
 		// move a ring
-	 	for(int i=0;i<1;i++){
+	 	for(int i=0;i<5;i++){
 			pair<int,int> ring=black[i];
 			int x,y,sx,sy;
 			sx=ring.first; sy=ring.second;
+			if(sx==-1 && sy==-1) continue;
 			vector<moves> v;
 			v=getValid0(sx,sy);
 			ans.insert(ans.end(),v.begin(),v.end());
@@ -190,7 +194,7 @@ vector<moves> game::getValid2(int sx,int sy){
 	x=sx;y=sy;
 	pair<int,int> next=get2(x,y);
 	x=next.first; y=next.second;
-	cout<<x<<" "<<y<<endl;
+	// cout<<x<<" "<<y<<endl;
 	while(state[x][y]!=-1){
 		bool b=0;
 		if(state[x][y]==0){
@@ -386,6 +390,33 @@ vector<moves> game::getValid5(int sx,int sy){
 		x=next.first; y=next.second;
 	}
 	return v;	
+}
+
+vector<moves> game::validRemoveRing(int player){
+	vector<moves> ans;
+	if(player==1){
+		for(int i=0;i<5;i++){
+			if(white[i]!=make_pair(-1,-1)){
+				moves m;
+				m.type=RemoveRing;
+				m.coord.pb(white[i].first);
+				m.coord.pb(white[i].second);
+				ans.pb(m);
+			}
+		}
+	}
+	else{
+		for(int i=0;i<5;i++){
+			if(black[i]!=make_pair(-1,-1)){
+				moves m;
+				m.type=RemoveRing;
+				m.coord.pb(black[i].first);
+				m.coord.pb(black[i].second);
+				ans.pb(m);
+			}
+		}		
+	}
+	return ans;
 }
 
 vector<moves> game::getRun(int player){

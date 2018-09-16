@@ -22,6 +22,8 @@ game::game(){
 		}
 		state.pb(v);
 	}
+	removedWhite=0;
+	removedBlack=0;
 }
 	
 void game::print(){

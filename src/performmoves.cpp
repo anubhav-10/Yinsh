@@ -19,6 +19,7 @@ void game::removeRing(int x,int y){
 				white[i]=make_pair(-1,-1);
 				break;
 			}
+		removedWhite++;
 	}
 	else{
 		for(int i=0;i<5;i++)
@@ -26,6 +27,7 @@ void game::removeRing(int x,int y){
 				black[i]=make_pair(-1,-1);
 				break;
 			}	
+		removedBlack++;
 	}
 }
 void game::moveRing(int sx,int sy,int ex,int ey){
@@ -118,4 +120,25 @@ void game::removeRun(int sx,int sy,int ex,int ey){
 
 void game::placeMarker(int x,int y,int e){
 	state[x][y]=e;
+}
+
+bool game::terminal(){
+	if(removedBlack==3 || removedWhite==3)
+		return 1;
+	return 0;
+}
+
+void game::performMove(moves m,int player){
+	if(m.type==Place){
+		insertRing(m.coord[0],m.coord[1],player);
+	}
+	else if(m.type==Move){
+		moveRing(m.coord[0],m.coord[1],m.coord[2],m.coord[3]);
+	}
+	else if(m.type==RemoveRun){
+		removeRun(m.coord[0],m.coord[1],m.coord[2],m.coord[3]);
+	}
+	else{
+		removeRing(m.coord[0],m.coord[1]);
+	}
 }

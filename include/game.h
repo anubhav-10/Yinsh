@@ -9,6 +9,7 @@ using namespace std;
 class game{
 	vector<vector<int>> state;
 	vector<pair<int,int>> white,black;
+	int removedWhite,removedBlack;
 	public:
 		game();
 		void placeMarker(int x,int y,int e); // for testing purposes
@@ -16,6 +17,8 @@ class game{
 		void removeRing(int x,int y);
 		void moveRing(int sx,int sy,int ex,int ey); 
 		void removeRun(int sx,int sy,int ex,int ey); // for executing opponent's move
+		bool terminal();
+		void performMove(moves m,int player);
 		// Auxiliary functions
 		void flip(int sx,int sy,int ex,int ey,int direction);
 		int getDirection(int sx,int sy,int ex,int ey);
@@ -34,6 +37,7 @@ class game{
 		vector<moves> getValid3(int sx,int sy);
 		vector<moves> getValid4(int sx,int sy);
 		vector<moves> getValid5(int sx,int sy);
+		vector<moves> validRemoveRing(int player);
 		vector<moves> getRun(int player);
 		vector<moves> getRunDown(int player);
 		vector<moves> getRunDownUtil(int player,int startx,int a,int b);
