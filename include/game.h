@@ -3,15 +3,20 @@
 
 #include <vector>
 #include <moves.h>
+#include <map>
+#include <tuple>
 #include <iostream>
 #define pb push_back
 using namespace std;
+extern map<tuple<int,int,int,int>,int> direct;
+
 class game{
 	vector<vector<int>> state;
 	vector<pair<int,int>> white,black;
 	int removedWhite,removedBlack;
 	public:
 		game();
+		void initialize();
 		void placeMarker(int x,int y,int e); // for testing purposes
 		void insertRing(int x,int y,int element);
 		void removeRing(int x,int y);

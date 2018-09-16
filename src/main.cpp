@@ -190,6 +190,8 @@ int main(int argc, char const *argv[])
 	// y.getAllMoves(2,g,x,0);
 	// y.print();
 
+	game temp;
+	temp.initialize();
 	int id,n,t;
 	cin>>id>>n>>t;
 	cin.ignore();
@@ -208,7 +210,8 @@ int main(int argc, char const *argv[])
 		}
 	}
 	while(!g.terminal()){
-		vector<moves> v=player.makeDecision(g);
+		// vector<moves> v=player.makeDecision(g);
+		pair<vector<moves>,game> z= player.makeDecision(g);
 		// cout<<"Ab"<<endl;
 
 		// for(int j=0;j<v.size();j++){
@@ -218,10 +221,11 @@ int main(int argc, char const *argv[])
 		// }
 		// cout<<endl;
 		// cout<<v.size();
-		cout<<convertTo(v)<<endl;
-		for(int i=0;i<v.size();i++){
-			g.performMove(v[i],id);
-		}
+		cout<<convertTo(z.first)<<endl;
+		g = z.second;
+		// for(int i=0;i<v.size();i++){
+		// 	g.performMove(v[i],id);
+		// }
 		// player.g.print();
 
 		// cin>>move;

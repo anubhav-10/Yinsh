@@ -47,9 +47,10 @@ double AI::utility(int player){
 	return (player==1)?score:(10-score);
 }
 
-vector<moves> AI::makeDecision(game g){
+pair<vector<moves>,game> AI::makeDecision(game g){
 	double resultValue=INT_MIN;
 	vector<moves> result;
+	game result_state;
 	allvalidmoves p;
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
@@ -57,19 +58,20 @@ vector<moves> AI::makeDecision(game g){
 	// cout<<p.allMoves.size()<<endl;
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
-		for(int j=0;j<p.allMoves[i].size();j++){
-			b.performMove(p.allMoves[i][j],id);
+		for(int j=0;j<p.allMoves[i].first.size();j++){
+			b.performMove(p.allMoves[i].first[j],id);
 		}
 		double value=maxValue(b,INT_MIN,numeric_limits<double>::max(),2);
 		// cerr<<value<<endl;
 		if(value > resultValue){
 			resultValue = value;
-			result = p.allMoves[i];
+			result_state = p.allMoves[i].second;
+			result = p.allMoves[i].first;
 			// cout<<p.allMoves[i].size()<<endl;
 		}
 	}
 	// cout<<result.size()<<endl;
-	return result;
+	return make_pair(result,result_state);
 }
 
 double AI::maxValue(game g,double alpha,double beta,int depth){
@@ -91,8 +93,8 @@ double AI::maxValue(game g,double alpha,double beta,int depth){
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
-		for(int j=0;j<p.allMoves[i].size();j++){
-			b.performMove(p.allMoves[i][j],id);
+		for(int j=0;j<p.allMoves[i].first.size();j++){
+			b.performMove(p.allMoves[i].first[j],id);
 		}
 		value = max(value,minValue(b,alpha,beta,depth-1));
 		alpha = max(alpha,value);
@@ -124,8 +126,8 @@ double AI::minValue(game g,double alpha,double beta,int depth){
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
-		for(int j=0;j<p.allMoves[i].size();j++){
-			b.performMove(p.allMoves[i][j],opponent_id);
+		for(int j=0;j<p.allMoves[i].first.size();j++){
+			b.performMove(p.allMoves[i].first[j],opponent_id);
 		}
 		value = min(value,maxValue(b,alpha,beta,depth-1));
 		beta = min(beta,value);

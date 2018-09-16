@@ -10,7 +10,7 @@ using namespace std;
 
 class allvalidmoves {
 	public:
-		vector<vector<moves>> allMoves;
+		vector<pair<vector<moves>,game>> allMoves;
 		void getAllMoves(int player,game g,vector<moves> ans,bool moveMade);
 		void print();
 };

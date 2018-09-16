@@ -53,6 +53,8 @@ void game::moveRing(int sx,int sy,int ex,int ey){
 	}
 
 	int z =  getDirection(sx,sy,ex,ey);
+	// cerr<<z<<endl;
+	// cerr<<sx<<" "<<sy<<" "<<ex<<" "<<ey<<" "<<z<<endl; 
 	flip(sx,sy,ex,ey,z);
 
 }

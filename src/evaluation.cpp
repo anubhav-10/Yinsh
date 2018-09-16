@@ -25,6 +25,7 @@ void init(){
 		s1.pb(0);
 		s2.pb(0);
 	}
+	// cout<<s1.size()<<endl;
 }
 
 double game::markerScore(int player){
@@ -56,8 +57,6 @@ double game::markerScoreDownUtil(int player,int startx,int a,int b){
 		while(state[x][y]!=-1){
 			if(state[x][y]==marker){
 				marker_score += row_weights[allot];
-				if(player==1) s1[allot]++;
-				else s2[allot]++;
 	 			if(allot!=4)
 	 				allot++;
  			}
@@ -67,8 +66,12 @@ double game::markerScoreDownUtil(int player,int startx,int a,int b){
 	 			if(allot!=4)
 	 				allot++;
  			}
- 			else
+ 			else{
+ 				// cerr<<allot<<endl;
+				if(player==1) s1[allot]++;
+				else s2[allot]++;
  				allot = 0;
+ 			}
  			pair<int,int> p = get3(x,y);
  			x = p.first;
  			y = p.second;
@@ -95,8 +98,6 @@ double game::markerScoreSEUtil(int player,int startx,int a,int b){
 		while(state[x][y]!=-1){
 			if(state[x][y]==marker){
 				marker_score += row_weights[allot];
-				if(player==1) s1[allot]++;
-				else s2[allot]++;
 	 			if(allot!=4)
 	 				allot++;
  			}
@@ -106,8 +107,11 @@ double game::markerScoreSEUtil(int player,int startx,int a,int b){
 	 			if(allot!=4)
 	 				allot++;
  			}
- 			else
- 				allot = 0;
+ 			else{
+ 				if(player==1) s1[allot]++;
+				else s2[allot]++;
+				allot = 0;
+ 			}
  			pair<int,int> p = get2(x,y);
  			x = p.first;
  			y = p.second;
@@ -134,8 +138,6 @@ double game::markerScoreSWUtil(int player,int startx,int a,int b){
 		while(state[x][y]!=-1){
 			if(state[x][y]==marker){
 				marker_score += row_weights[allot];
-				if(player==1) s1[allot]++;
-				else s2[allot]++;
 	 			if(allot!=4)
 	 				allot++;
  			}
@@ -145,8 +147,11 @@ double game::markerScoreSWUtil(int player,int startx,int a,int b){
 	 			if(allot!=4)
 	 				allot++;
  			}
- 			else
- 				allot = 0;
+ 			else{
+ 				if(player==1) s1[allot]++;
+				else s2[allot]++;
+				allot = 0;
+ 			}
  			pair<int,int> p = get4(x,y);
  			x = p.first;
  			y = p.second;
@@ -509,10 +514,10 @@ double game::eval(int player){
 
 	// double b_score = (w0*no_of_b_markers + w1*b_row + w2*flip_b_markers + w3*mobility_b_ring + w4*removedBlack) * (a0 + b0*removedBlack);
 	// double w_score = (w5*no_of_w_markers + w6*w_row + w7*flip_w_markers + w8*mobility_w_ring + w9*removedWhite) * (a0 + b1*removedWhite);
-
-	double w_score = pow(-1,player-1)*(-1000000*(removedBlack)+10000000*(removedWhite)+(s1[0]-s2[0])+40*(s1[1]-s2[1])+1000*(s1[2]-s2[2])+10000*(s1[3]-s2[3])+1000000*(s1[4]-s2[4])+500000*(flip_b_markers-flip_w_markers)); 
+	// double w_score = pow(-1,player-1)*(-100000*(removedBlack)+1000000000*(removedWhite)+(s1[0]-s2[0])+400*(s1[1]-s2[1])+10000*(s1[2]-s2[2])+500000*(s1[3]-s2[3])+100000000*(s1[4]-s2[4])+1000*(mobility_w_ring-mobility_b_ring)); 
 	// double b_score = 10000*(removedBlack)+(s2[0]-s1[0])+4*(s2[1]-s1[1])+100*(s2[2]-s1[2])+1000*(s2[3]-s1[3])+10000*(s2[4]-s1[4]); 
-
+	// double w_score = pow(-1,player-1)*(-100000*(removedBlack)+1000000000*(removedWhite)+(s1[0]-s2[0])+400*(s1[1]-s2[1])+10000*(s1[2]-s2[2])+500000*(s1[3]-s2[3])+100000000*(s1[4]-s2[4])+1000*(mobility_w_ring-mobility_b_ring)); 
+ 	double w_score = pow(-1,player-1)*(-10000*(removedBlack)+10000000*(removedWhite)+(s1[0]-s2[0])+40*(s1[1]-s2[1])+1000*(s1[2]-s2[2])+10000*(s1[3]-s2[3])+100000*(s1[4]-s2[4])); 
 	// return (player==1)?w_score:b_score;
 	return w_score;
 }
