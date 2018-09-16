@@ -461,13 +461,15 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 				l=1;
 				pair<int,int> p=get3(x,y);
 				x=p.first; y=p.second;
+				// cout<<sx<<" "<<sy<<endl;
+				// cout<<x<<" "<<y<<endl;
 				while(state[x][y]==c){
 					l++;
 					if(l==5){
 						// add in vector
 						moves m;
 						m.type = RemoveRun;
-						// cout<<sx<<" "<<sy<<endl;
+						cout<<sx<<" "<<sy<<endl;
 						m.coord.pb(sx);
 						m.coord.pb(sy);
 						m.coord.pb(x);
@@ -480,8 +482,10 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 					pair<int,int> p=get3(x,y);
 					x=p.first; y=p.second;
 				}
+				sx=x;sy=y;
 				if(state[x][y]==-1) break;
 			}
+					// cout<<x<<" "<<y<<endl;
 			pair<int,int> temp=get3(sx,sy);
 			sx=temp.first; sy=temp.second;
 			pair<int,int> p=get3(x,y);

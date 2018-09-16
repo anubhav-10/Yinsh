@@ -181,6 +181,11 @@ int main(int argc, char const *argv[])
 	g.removeRing(5,25);
 
 	vector<moves> x=g.getRunDown(2);
+	for(int i=0;i<x.size();i++){
+		cout<<x[i].type<<" ";
+		cout<<x[i].coord[0]<<" "<<x[i].coord[1]<<" "<<x[i].coord[2]<<" "<<x[i].coord[3]<<" ";
+		cout<<endl;
+	}
 	// allvalidmoves y;
 	// y.getAllMoves(2,g,x,0);
 	// y.print();
