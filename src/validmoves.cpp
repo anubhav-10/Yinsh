@@ -439,11 +439,11 @@ vector<moves> game::getRun(int player){
 vector<moves> game::getRunDown(int player){
 	vector<moves> ans,v;
 	// Down
-	ans=getRunDownUtil(player,5,1,1);
-	// v=getRunDownUtil(player,5,26,29);
-	// ans.insert(ans.end(),v.begin(),v.end());
-	// v=getRunDownUtil(player,4,0,0);
-	// ans.insert(ans.end(),v.begin(),v.end());
+	ans=getRunDownUtil(player,5,1,4);
+	v=getRunDownUtil(player,5,26,29);
+	ans.insert(ans.end(),v.begin(),v.end());
+	v=getRunDownUtil(player,4,0,0);
+	ans.insert(ans.end(),v.begin(),v.end());
 
 	return ans;
 }
@@ -469,7 +469,7 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 						// add in vector
 						moves m;
 						m.type = RemoveRun;
-						cout<<sx<<" "<<sy<<endl;
+						// cout<<sx<<" "<<sy<<endl;
 						m.coord.pb(sx);
 						m.coord.pb(sy);
 						m.coord.pb(x);
