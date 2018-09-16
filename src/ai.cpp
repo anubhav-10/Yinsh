@@ -53,7 +53,7 @@ vector<moves> AI::makeDecision(){
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(id,g,v,0);
-	cout<<p.allMoves.size()<<endl;
+	// cout<<p.allMoves.size()<<endl;
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
 		for(int j=0;j<p.allMoves[i].size();j++){
@@ -71,7 +71,7 @@ vector<moves> AI::makeDecision(){
 
 double AI::maxValue(double alpha,double beta){
 	if(g.terminal())
-		return utility(id);
+		return g.eval();
 
 	double value = numeric_limits<double>::min();
 	game a = g;
@@ -80,10 +80,9 @@ double AI::maxValue(double alpha,double beta){
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(id,g,v,0);
-
 	// getAllMoves(id,a,v,0);
-	if(allMoves.size()==0)
-		return utility(id);
+	if(p.allMoves.size()==0)
+		return g.eval();
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
@@ -100,7 +99,7 @@ double AI::maxValue(double alpha,double beta){
 
 double AI::minValue(double alpha,double beta){
 	if(g.terminal())
-		return utility(opponent_id);
+		return g.eval();
 
 	double value = numeric_limits<double>::max();
 	game a = g;
@@ -110,8 +109,11 @@ double AI::minValue(double alpha,double beta){
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(opponent_id,g,v,0);
 
-	if(allMoves.size()==0)
-		return utility(opponent_id);
+	// cout<<p.allMoves.size()<<endl;
+	if(p.allMoves.size()==0){
+		cout<<"abc";
+		return g.eval();
+	}
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;

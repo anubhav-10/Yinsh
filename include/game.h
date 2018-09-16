@@ -45,6 +45,35 @@ class game{
 		vector<moves> getRunSEUtil(int player,int startx,int a,int b);
 		vector<moves> getRunSW(int player);
 		vector<moves> getRunSWUtil(int player,int startx,int a,int b);
+		// evaluation function
+		double markerScore(int player);
+		double markerScoreDown(int player);
+		double markerScoreDownUtil(int player,int startx,int a,int b);
+		double markerScoreSE(int player);
+		double markerScoreSEUtil(int player,int startx,int a,int b);
+		double markerScoreSW(int player);
+		double markerScoreSWUtil(int player,int startx,int a,int b);
+
+		double flippedScore(int player);
+		int flippedUtilUP(int player,int x,int y);
+		int flippedUtilDown(int player,int x,int y);
+		int flippedUtilSE(int player,int x,int y);
+		int flippedUtilSW(int player,int x,int y);
+		int flippedUtilNE(int player,int x,int y);
+		int flippedUtilNW(int player,int x,int y);
+
+		double countMarkers(int player);
+
+		double mobilityScore(int player);
+		int mobilityUtilUP(int player,int x,int y);
+		int mobilityUtilDown(int player,int x,int y);
+		int mobilityUtilSE(int player,int x,int y);
+		int mobilityUtilSW(int player,int x,int y);
+		int mobilityUtilNE(int player,int x,int y);
+		int mobilityUtilNW(int player,int x,int y);
+		
+		double eval();
+
 		void print();
 };
 
