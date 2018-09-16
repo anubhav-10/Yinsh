@@ -537,6 +537,7 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 					pair<int,int> p=get2(x,y);
 					x=p.first; y=p.second;
 				}
+				sx=x;sy=y;
 				if(state[x][y]==-1) break;
 			}
 			pair<int,int> temp=get2(sx,sy);
@@ -590,6 +591,7 @@ vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
 					pair<int,int> p=get4(x,y);
 					x=p.first; y=p.second;
 				}
+				sx=x;sy=y;
 				if(state[x][y]==-1) break;
 			}
 			pair<int,int> temp=get4(sx,sy);
