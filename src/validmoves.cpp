@@ -5,6 +5,7 @@ using namespace std;
 vector<moves> game::validMoves(int player){
 	vector<moves> ans;
 	if(player==1){
+		bool b=0;
 		// place a ring
 		if(white.size()<5){
 			for(int i=0;i<state.size();i++){
@@ -15,8 +16,10 @@ vector<moves> game::validMoves(int player){
 						m.coord.pb(i);
 						m.coord.pb(j);
 						ans.pb(m);
+						b=1;
 						break;
 					}
+				if(b) return ans;
 			}
 			return ans;
 		}
@@ -46,6 +49,7 @@ vector<moves> game::validMoves(int player){
  	else if(player==2){
 		// place a ring
 		if(black.size()<5){
+			bool b=0;
 			for(int i=0;i<state.size();i++){
 				for(int j=0;j<state[i].size();j++)
 					if(state[i][j]==0){
@@ -54,8 +58,10 @@ vector<moves> game::validMoves(int player){
 						m.coord.pb(i);
 						m.coord.pb(j);
 						ans.pb(m);
+						b=1;
 						break;
 					}
+				if(b) return ans;
 			}
 			return ans;
 		}

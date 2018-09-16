@@ -4,8 +4,9 @@
 #include <limits>
 using namespace std;
 
-AI::AI(){
-	id=1;
+AI::AI(int id){
+	this->id=id;
+	opponent_id=(id==1)?2:1;
 	removedRings1=0;
 	removedRings2=0;
 }
@@ -43,68 +44,87 @@ double AI::utility(int player){
 		return 0;
 }
 
-double AI::maxValue(int player,double alpha,double beta){
-	if(isTerminal())
-		return utility(player);
+vector<moves> AI::makeDecision(){
+	double resultValue=numeric_limits<double>::min();
+	vector<moves> result;
+	allvalidmoves p;
+	vector<moves> v;
+	vector<vector<moves>> allMoves;
+	p.getAllMoves(id,g,v,0);
 
+	for(int i=0;i<p.allMoves.size();i++){
+		game b=g;
+		for(int j=0;j<p.allMoves[i].size();j++){
+			b.performMove(p.allMoves[i][j],id);
+		}
+		double value=minValue(numeric_limits<double>::min(),numeric_limits<double>::max());
+		if(value > resultValue){
+			resultValue = value;
+			result = p.allMoves[i];
+		}
+	}
+	return result;
+}
+
+double AI::maxValue(double alpha,double beta){
+	if(g.terminal())
+		return utility(id);
+
+	double value = numeric_limits<double>::min();
+	game a = g;
+
+	allvalidmoves p;
+	vector<moves> v;
+	vector<vector<moves>> allMoves;
+	p.getAllMoves(id,g,v,0);
+
+	// getAllMoves(id,a,v,0);
+	if(allMoves.size()==0)
+		return utility(id);
+
+	for(int i=0;i<p.allMoves.size();i++){
+		game b=g;
+		for(int j=0;j<p.allMoves[i].size();j++){
+			b.performMove(p.allMoves[i][j],id);
+		}
+		value = max(value,minValue(alpha,beta));
+		if(value>=beta)
+			return value;
+		alpha = max(alpha,value);
+	}
+	return value;
+}
+
+double AI::minValue(double alpha,double beta){
+	if(g.terminal())
+		return utility(opponent_id);
 
 	double value = numeric_limits<double>::max();
+	game a = g;
+
+	allvalidmoves p;
+	vector<moves> v;
+	vector<vector<moves>> allMoves;
+	p.getAllMoves(opponent_id,g,v,0);
+
+	if(allMoves.size()==0)
+		return utility(opponent_id);
+
+	for(int i=0;i<p.allMoves.size();i++){
+		game b=g;
+		for(int j=0;j<p.allMoves[i].size();j++){
+			b.performMove(p.allMoves[i][j],opponent_id);
+		}
+		value = min(value,maxValue(alpha,beta));
+		if(value<=alpha)
+			return value;
+		alpha = min(alpha,value);
+	}
+	return value;
 }
 
 bool AI::isTerminal(){
 	if(removedRings1==3 || removedRings2==3)
 		return 1;
 	return 0;
-}
-
-void AI::getAllMoves(game g,vector<moves> v,bool moveMade){
-	if(g.terminal()){
-		allMoves.pb(v);
-		return;
-	}
-
-	vector<moves> runs=g.getRun(id);
-	for(int i=0;i<runs.size();i++){
-		game a=g;
-		a.performMove(runs[i],id);
-		vector<moves> b=v;
-		b.pb(runs[i]);
-		vector<moves> removes=a.validRemoveRing(id);
-		for(int j=0;j<removes.size();j++){
-			game c=a;
-			c.performMove(removes[j],id);
-			vector<moves> d=b;
-			d.pb(removes[j]);
-			cout<<"abc";
-			getAllMoves(c,d,moveMade);
-		}
-	}
-	if(runs.size()>0){
-		return;
-	}
-	if(moveMade){
-		allMoves.pb(v);
-		return;
-	}
-
-	vector<moves> possibleMoves=g.validMoves(id);
-	for(int i=0;i<possibleMoves.size();i++){
-		game a=g;
-		a.performMove(possibleMoves[i],id);
-		vector<moves> b=v;
-		b.pb(possibleMoves[i]);
-		getAllMoves(a,b,1);
-	}
-}
-
-void AI::print(){
-	cout<<allMoves.size()<<endl;
-	for(int i=0;i<allMoves.size();i++){
-		for(int j=0;j<allMoves[i].size();j++){
-			cout<<allMoves[i][j].type<<" ";
-			for(int k=0;k<allMoves[i][j].coord.size();k++)
-				cout<<allMoves[i][j].coord[k]<<" ";
-		}
-		cout<<endl;
-	}
 }
