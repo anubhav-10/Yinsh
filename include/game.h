@@ -72,7 +72,7 @@ class game{
 		int mobilityUtilNE(int player,int x,int y);
 		int mobilityUtilNW(int player,int x,int y);
 		
-		double eval();
+		double eval(int player);
 
 		void print();
 };

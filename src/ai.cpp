@@ -74,7 +74,7 @@ vector<moves> AI::makeDecision(){
 
 double AI::maxValue(double alpha,double beta,int depth){
 	if(g.terminal() || depth==0)
-		return g.eval();
+		return g.eval(id);
 		// return utility(id);
 
 	double value = INT_MIN;
@@ -86,7 +86,7 @@ double AI::maxValue(double alpha,double beta,int depth){
 	p.getAllMoves(id,g,v,0);
 	// getAllMoves(id,a,v,0);
 	if(p.allMoves.size()==0)
-		return g.eval();
+		return g.eval(id);
 		// return utility(id);
 
 	for(int i=0;i<p.allMoves.size();i++){
@@ -105,7 +105,7 @@ double AI::maxValue(double alpha,double beta,int depth){
 double AI::minValue(double alpha,double beta,int depth){
 	if(g.terminal() || depth==0){
 		// return utility(opponent_id);
-		return g.eval();
+		return g.eval(opponent_id);
 	}
 
 	double value = numeric_limits<double>::max();
@@ -118,7 +118,7 @@ double AI::minValue(double alpha,double beta,int depth){
 
 	// cout<<p.allMoves.size()<<endl;
 	if(p.allMoves.size()==0){
-		return g.eval();
+		return g.eval(opponent_id);
 		// return utility(opponent_id);
 	}
 
