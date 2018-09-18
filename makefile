@@ -1,7 +1,7 @@
 IDIR =./include 
 CXX=g++ 
 CC=gcc
-CXXFLAGS= -I$(IDIR) -g -std=c++11 -w
+CXXFLAGS= -I$(IDIR) -g -std=c++11 -w -O3
 
 SRCDIR=./src
 ODIR=./obj
