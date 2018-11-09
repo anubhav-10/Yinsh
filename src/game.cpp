@@ -12,12 +12,12 @@ using namespace std;
 */
 
 game::game(){
-	for(int i=0;i<=6;i++){
+	for(int i=0;i<=nor+1;i++){
 		vector<int> v;
 		if(i==0) v.push_back(0);
 		for(int j=0;j<6*i;j++){
 			if(i==5 && j%5==0) v.pb(-1);
-			else if(i==6) v.pb(-1);
+			else if(i==nor+1) v.pb(-1);
 			else v.pb(0);
 		}
 		state.pb(v);

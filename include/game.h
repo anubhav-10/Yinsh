@@ -9,7 +9,7 @@
 #define pb push_back
 using namespace std;
 extern map<tuple<int,int,int,int>,int> direct;
-extern int no_of_moves;
+extern int no_of_moves, nor, nom;
 
 class game{
 	vector<vector<int>> state;

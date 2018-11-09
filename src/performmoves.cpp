@@ -14,7 +14,7 @@ void game::removeRing(int x,int y){
 	int p=state[x][y];
 	state[x][y]=0;
 	if(p==1){
-		for(int i=0;i<5;i++)
+		for(int i=0;i<nor;i++)
 			if(white[i]==make_pair(x,y)){
 				white[i]=make_pair(-1,-1);
 				break;
@@ -22,7 +22,7 @@ void game::removeRing(int x,int y){
 		removedWhite++;
 	}
 	else{
-		for(int i=0;i<5;i++)
+		for(int i=0;i<nor;i++)
 			if(black[i]==make_pair(x,y)){
 				black[i]=make_pair(-1,-1);
 				break;
@@ -34,7 +34,7 @@ void game::moveRing(int sx,int sy,int ex,int ey){
 	state[ex][ey]=state[sx][sy];
 	
 	if(state[sx][sy]==1){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<nor;i++){
 			if(white[i]==make_pair(sx,sy)){
 				white[i]=make_pair(ex,ey);
 				break;
@@ -43,7 +43,7 @@ void game::moveRing(int sx,int sy,int ex,int ey){
 		state[sx][sy]=3;
 	}
 	else if(state[sx][sy]==2){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<nor;i++){
 			if(black[i]==make_pair(sx,sy)){
 				black[i]=make_pair(ex,ey);
 				break;

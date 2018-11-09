@@ -3,6 +3,7 @@
 #include <ai.h>
 #include <string>
 using namespace std;
+int nom, nor;
 
 vector<moves> convertToMyMove(string s){
 	vector<moves> result;
@@ -190,10 +191,12 @@ int main(int argc, char const *argv[])
 	// y.getAllMoves(2,g,x,0);
 	// y.print();
 	no_of_moves=0;
-	game temp;
-	temp.initialize();
+	// game temp;
+	// temp.initialize();
 	int id,n,t,k;
 	cin>>id>>n>>t>>k;
+	nor = n;
+	nom = k;
 	cin.ignore();
 	game g;
 	AI player(id);

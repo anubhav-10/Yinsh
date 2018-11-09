@@ -7,7 +7,7 @@ vector<moves> game::validMoves(int player){
 	if(player==1){
 		bool b=0;
 		// place a ring
-		if(white.size()<5){
+		if(white.size()<nor){
 			for(int i=0;i<state.size();i++){
 				for(int j=0;j<state[i].size();j++)
 					if(state[i][j]==0){
@@ -26,7 +26,7 @@ vector<moves> game::validMoves(int player){
 		// check for a run
 
 		// move a ring
-	 	for(int i=0;i<5;i++){
+	 	for(int i=0;i<nor;i++){
 			pair<int,int> ring=white[i];
 			int x,y,sx,sy;
 			sx=ring.first; sy=ring.second;
@@ -48,7 +48,7 @@ vector<moves> game::validMoves(int player){
  	}
  	else if(player==2){
 		// place a ring
-		if(black.size()<5){
+		if(black.size()<nor){
 			bool b=0;
 			for(int i=0;i<state.size();i++){
 				for(int j=0;j<state[i].size();j++)
@@ -68,7 +68,7 @@ vector<moves> game::validMoves(int player){
 		// check for a run
 
 		// move a ring
-	 	for(int i=0;i<5;i++){
+	 	for(int i=0;i<nor;i++){
 			pair<int,int> ring=black[i];
 			int x,y,sx,sy;
 			sx=ring.first; sy=ring.second;
@@ -401,7 +401,7 @@ vector<moves> game::getValid5(int sx,int sy){
 vector<moves> game::validRemoveRing(int player){
 	vector<moves> ans;
 	if(player==1){
-		for(int i=0;i<5;i++){
+		for(int i=0;i<nor;i++){
 			if(white[i]!=make_pair(-1,-1)){
 				moves m;
 				m.type=RemoveRing;
@@ -412,7 +412,7 @@ vector<moves> game::validRemoveRing(int player){
 		}
 	}
 	else{
-		for(int i=0;i<5;i++){
+		for(int i=0;i<nor;i++){
 			if(black[i]!=make_pair(-1,-1)){
 				moves m;
 				m.type=RemoveRing;
@@ -439,11 +439,24 @@ vector<moves> game::getRun(int player){
 vector<moves> game::getRunDown(int player){
 	vector<moves> ans,v;
 	// Down
-	ans=getRunDownUtil(player,5,1,4);
-	v=getRunDownUtil(player,5,26,29);
-	ans.insert(ans.end(),v.begin(),v.end());
-	v=getRunDownUtil(player,4,0,0);
-	ans.insert(ans.end(),v.begin(),v.end());
+	if(nor == 5){
+		ans=getRunDownUtil(player,5,1,4);
+		v=getRunDownUtil(player,5,26,29);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunDownUtil(player,4,0,0);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
+	else{
+		ans=getRunDownUtil(player,6,1,5);
+		v=getRunDownUtil(player,6,31,35);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunDownUtil(player,5,0,0);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunDownUtil(player,6,7,7);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunDownUtil(player,6,29,29);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
 
 	return ans;
 }
@@ -465,7 +478,7 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 				// cout<<x<<" "<<y<<endl;
 				while(state[x][y]==c){
 					l++;
-					if(l==5){
+					if(l==nom){
 						// add in vector
 						moves m;
 						m.type = RemoveRun;
@@ -475,7 +488,7 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-						l=4;
+						l=nom-1;
 						pair<int,int> temp=get3(sx,sy);
 						sx=temp.first; sy=temp.second;
 					}
@@ -497,12 +510,24 @@ vector<moves> game::getRunDownUtil(int player,int startx,int a,int b){
 vector<moves> game::getRunSE(int player){
 	vector<moves> ans,v;
 	// SE
-	ans=getRunSEUtil(player,5,21,24);
-	v=getRunSEUtil(player,5,26,29);
-	ans.insert(ans.end(),v.begin(),v.end());
-	v=getRunSEUtil(player,4,20,20);
-	ans.insert(ans.end(),v.begin(),v.end());
-
+	if(nor == 5){
+		ans=getRunSEUtil(player,5,21,24);
+		v=getRunSEUtil(player,5,26,29);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSEUtil(player,4,20,20);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
+	else{
+		ans=getRunSEUtil(player,6,25,29);
+		v=getRunSEUtil(player,6,31,35);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSEUtil(player,5,25,25);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSEUtil(player,6,1,1);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSEUtil(player,6,23,23);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
 	return ans;
 }
 
@@ -521,7 +546,7 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 				x=p.first; y=p.second;
 				while(state[x][y]==c){
 					l++;
-					if(l==5){
+					if(l==nom){
 						// add in vector
 						moves m;
 						m.type = RemoveRun;
@@ -530,7 +555,7 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-						l=4;
+						l=nom-1;
 						pair<int,int> temp=get2(sx,sy);
 						sx=temp.first; sy=temp.second;
 					}
@@ -551,11 +576,24 @@ vector<moves> game::getRunSEUtil(int player,int startx,int a,int b){
 vector<moves> game::getRunSW(int player){
 	vector<moves> ans,v;
 	// SW
-	ans=getRunSWUtil(player,5,1,4);
-	v=getRunSWUtil(player,5,6,9);
-	ans.insert(ans.end(),v.begin(),v.end());
-	v=getRunSWUtil(player,4,4,4);
-	ans.insert(ans.end(),v.begin(),v.end());
+	if(nor == 5){
+		ans=getRunSWUtil(player,5,1,4);
+		v=getRunSWUtil(player,5,6,9);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSWUtil(player,4,4,4);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
+	else{
+		ans=getRunSWUtil(player,6,1,5);
+		v=getRunSWUtil(player,6,7,11);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSWUtil(player,5,5,5);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSWUtil(player,6,35,35);
+		ans.insert(ans.end(),v.begin(),v.end());
+		v=getRunSWUtil(player,6,13,13);
+		ans.insert(ans.end(),v.begin(),v.end());
+	}
 
 	return ans;
 }
@@ -575,7 +613,7 @@ vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
 				x=p.first; y=p.second;
 				while(state[x][y]==c){
 					l++;
-					if(l==5){
+					if(l==nom){
 						// add in vector
 						moves m;
 						m.type = RemoveRun;
@@ -584,7 +622,7 @@ vector<moves> game::getRunSWUtil(int player,int startx,int a,int b){
 						m.coord.pb(x);
 						m.coord.pb(y);
 						v.pb(m);
-						l=4;
+						l=nom-1;
 						pair<int,int> temp=get4(sx,sy);
 						sx=temp.first; sy=temp.second;
 					}

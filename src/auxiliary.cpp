@@ -84,56 +84,56 @@ int game::getDirection(int sx,int sy,int ex,int ey){
 		4 -> sw
 		5 -> nw
 	*/
-	map<tuple<int,int,int,int>,int>::iterator itr;
-	// cerr<<sx<<endl;
-	// cerr<<sx<<" "<<sy<<" "<<ex<<" "<<ey<<endl;
-	itr = direct.find(make_tuple(sx,sy,ex,ey));
-	// cerr<<(itr==direct.end())<<endl;
-	return itr->second;
-	// pair<int,int> dest=make_pair(ex,ey);
-	// int x,y;
-	// pair<int,int>p;
+	// map<tuple<int,int,int,int>,int>::iterator itr;
+	// // cerr<<sx<<endl;
+	// // cerr<<sx<<" "<<sy<<" "<<ex<<" "<<ey<<endl;
+	// itr = direct.find(make_tuple(sx,sy,ex,ey));
+	// // cerr<<(itr==direct.end())<<endl;
+	// return itr->second;
+	pair<int,int> dest=make_pair(ex,ey);
+	int x,y;
+	pair<int,int>p;
 
-	// x=sx;y=sy;
-	// p=get0(x,y);
-	// while(state[x][y]!=-1){
-	// 	if(dest==p) return 0;
-	// 	x = p.first; y = p.second;
-	// 	p=get0(x,y);
-	// }
+	x=sx;y=sy;
+	p=get0(x,y);
+	while(state[x][y]!=-1){
+		if(dest==p) return 0;
+		x = p.first; y = p.second;
+		p=get0(x,y);
+	}
 
-	// x=sx;y=sy;
-	// p=get1(x,y);
-	// while(state[x][y]!=-1){
-	// 	if(dest==p) return 1;
-	// 	x = p.first; y = p.second;
-	// 	p=get1(x,y);
-	// }
+	x=sx;y=sy;
+	p=get1(x,y);
+	while(state[x][y]!=-1){
+		if(dest==p) return 1;
+		x = p.first; y = p.second;
+		p=get1(x,y);
+	}
 
-	// x=sx;y=sy;
-	// p=get2(x,y);
-	// while(state[x][y]!=-1){
-	// 	if(dest==p) return 2;
-	// 	x = p.first; y = p.second;
-	// 	p=get2(x,y);
-	// }
+	x=sx;y=sy;
+	p=get2(x,y);
+	while(state[x][y]!=-1){
+		if(dest==p) return 2;
+		x = p.first; y = p.second;
+		p=get2(x,y);
+	}
 
-	// x=sx;y=sy;
-	// p=get3(x,y);
-	// while(state[x][y]!=-1){
-	// 	if(dest==p) return 3;
-	// 	x = p.first; y = p.second;
-	// 	p=get3(x,y);
-	// }
-	// x=sx;y=sy;
-	// p=get4(x,y);
-	// while(state[x][y]!=-1){
-	// 	if(dest==p) return 4;
-	// 	x = p.first; y = p.second;
-	// 	p=get4(x,y);
-	// }
+	x=sx;y=sy;
+	p=get3(x,y);
+	while(state[x][y]!=-1){
+		if(dest==p) return 3;
+		x = p.first; y = p.second;
+		p=get3(x,y);
+	}
+	x=sx;y=sy;
+	p=get4(x,y);
+	while(state[x][y]!=-1){
+		if(dest==p) return 4;
+		x = p.first; y = p.second;
+		p=get4(x,y);
+	}
 
-	// return 5;
+	return 5;
 }
 
 int game::getRegion(int x,int y){
@@ -257,30 +257,6 @@ pair<int,int> game::get5(int x,int y){ // NW
 }
 
 void game::initialize(){
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,2,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,3,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,4,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,1),0));
-	// direct.insert(make_pair(make_tuple(0,0,2,2),0));
-	// direct.insert(make_pair(make_tuple(0,0,3,3),0));
-	// direct.insert(make_pair(make_tuple(0,0,4,4),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,2),0));
-	// direct.insert(make_pair(make_tuple(0,0,2,4),0));
-	// direct.insert(make_pair(make_tuple(0,0,3,6),0));
-	// direct.insert(make_pair(make_tuple(0,0,4,8),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,3),0));
-	// direct.insert(make_pair(make_tuple(0,0,2,6),0));
-	// direct.insert(make_pair(make_tuple(0,0,3,9),0));
-	// direct.insert(make_pair(make_tuple(0,0,4,12),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,4),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// direct.insert(make_pair(make_tuple(0,0,1,0),0));
-	// cout<<state.size()<<endl;
 	for(int i=0;i<state.size()-1;i++){
 		for(int j=0;j<state[i].size();j++){
 			int sx=i,sy=j,x,y;
