@@ -18,6 +18,7 @@ double a0 = 0.5;
 double b0 = 0.5;
 double b1 = 0.5;
 vector<int> s1,s2;
+int mark_ring_W, mark_ring_B;
 void init(){
 	s1.clear();
 	s2.clear();
@@ -25,6 +26,8 @@ void init(){
 		s1.pb(0);
 		s2.pb(0);
 	}
+	mark_ring_B=0;
+	mark_ring_W=0;
 	// cout<<s1.size()<<endl;
 }
 
@@ -62,9 +65,16 @@ double game::markerScoreDownUtil(int player,int startx,int a,int b){
  			}
  			else if(state[x][y]==player){
  				marker_score += 0.5 * row_weights[allot];
- 				// allot=0;
+ 				// allot=0;jf[]
 	 			if(allot!=4)
 	 				allot++;
+	 			else{
+	 				if(player==1)
+	 					mark_ring_W++;
+	 				else
+	 					mark_ring_B++;
+	 				allot=0;
+	 			}
  			}
  			else{
  				// cerr<<allot<<endl;
@@ -91,6 +101,7 @@ double game::markerScoreSE(int player){
 double game::markerScoreSEUtil(int player,int startx,int a,int b){
 	int marker = (player==1)?3:4;
 	double marker_score=0;
+	// bool b=0;
 	for(int i=a;i<=b;i++){
 		int sx=startx,sy=i;
 		int allot = 0;
@@ -106,6 +117,13 @@ double game::markerScoreSEUtil(int player,int startx,int a,int b){
  				// allot=0;
 	 			if(allot!=4)
 	 				allot++;
+	 			else{
+	 				if(player==1)
+	 					mark_ring_W++;
+	 				else
+	 					mark_ring_B++;
+	 				allot=0;
+	 			}
  			}
  			else{
  				if(player==1) s1[allot]++;
@@ -146,6 +164,13 @@ double game::markerScoreSWUtil(int player,int startx,int a,int b){
  				// allot=0;
 	 			if(allot!=4)
 	 				allot++;
+	 			else{
+	 				if(player==1)
+	 					mark_ring_W++;
+	 				else
+	 					mark_ring_B++;
+	 				allot=0;
+	 			}
  			}
  			else{
  				if(player==1) s1[allot]++;
@@ -504,20 +529,34 @@ double game::eval(int player){
 
 	double w_row = markerScore(1);
 	double b_row = markerScore(2);	
-
-	double flip_w_markers = flippedScore(2);
-	double flip_b_markers = flippedScore(1);
-				// cout<<"Ab"<<endl;
+	int ring_count_w=0,ring_count_b=0;
+	for(int i=0;i<5;i++){
+		if(white[i]!=make_pair(-1,-1))
+			ring_count_w++;
+		if(black[i]!=make_pair(-1,-1))
+			ring_count_b++;
+	}
+	// double flip_w_markers = flippedScore(2);
+	// double flip_b_markers = flippedScore(1);
+	// 			// cout<<"Ab"<<endl;
 
 	double mobility_w_ring = mobilityScore(1);
 	double mobility_b_ring = mobilityScore(2);
-
+	double x=100000;
+	// if(removedWhite==2)
+	// 	x=10000000;
 	// double b_score = (w0*no_of_b_markers + w1*b_row + w2*flip_b_markers + w3*mobility_b_ring + w4*removedBlack) * (a0 + b0*removedBlack);
 	// double w_score = (w5*no_of_w_markers + w6*w_row + w7*flip_w_markers + w8*mobility_w_ring + w9*removedWhite) * (a0 + b1*removedWhite);
 	// double w_score = pow(-1,player-1)*(-100000*(removedBlack)+1000000000*(removedWhite)+(s1[0]-s2[0])+400*(s1[1]-s2[1])+10000*(s1[2]-s2[2])+500000*(s1[3]-s2[3])+100000000*(s1[4]-s2[4])+1000*(mobility_w_ring-mobility_b_ring)); 
 	// double b_score = 10000*(removedBlack)+(s2[0]-s1[0])+4*(s2[1]-s1[1])+100*(s2[2]-s1[2])+1000*(s2[3]-s1[3])+10000*(s2[4]-s1[4]); 
 	// double w_score = pow(-1,player-1)*(-100000*(removedBlack)+1000000000*(removedWhite)+(s1[0]-s2[0])+400*(s1[1]-s2[1])+10000*(s1[2]-s2[2])+500000*(s1[3]-s2[3])+100000000*(s1[4]-s2[4])+1000*(mobility_w_ring-mobility_b_ring)); 
- 	double w_score = pow(-1,player-1)*(-10000*(removedBlack)+10000000*(removedWhite)+(s1[0]-s2[0])+40*(s1[1]-s2[1])+1000*(s1[2]-s2[2])+10000*(s1[3]-s2[3])+100000*(s1[4]-s2[4])); 
+ 	// double w_score = pow(-1,player-1)*(-200000*(removedBlack)+x*(removedWhite)+1000*(mark_ring_W-10*mark_ring_B)+(s1[0]-s2[0])+4*(s1[1]-s2[1])+24*(4*s1[2]-2*s2[2])+160*(s1[3]-50*s2[3])+950*(s1[4]-70*s2[4])); 
 	// return (player==1)?w_score:b_score;
-	return w_score;
+	double w1_score = pow(-1,player-1)*(-1000000*(removedBlack)+10000000*(removedWhite)+(s1[0]-s2[0])+40*(s1[1]-s2[1])+1000*(s1[2]-s2[2])+10000*(s1[3]-s2[3])+1000000*(s1[4]-s2[4])+500000);
+	double w_score = pow(-1,player-1)*(-200000*(removedBlack)+10000000*(removedWhite)+1000*(10*mark_ring_W-mark_ring_B)+(s1[0]-s2[0])+4*(s1[1]-s2[1])+24*(4*s1[2]-2*s2[2])+160*(200*s1[3]-50*s2[3])+950*(500*s1[4]-70*s2[4]));
+	double b_score = pow(-1,player-2)*(-200000*(removedWhite)+10000000*(removedBlack)+1000*(10*mark_ring_B-mark_ring_W)+(s2[0]-s1[0])+4*(s2[1]-s1[1])+24*(4*s2[2]-2*s1[2])+160*(200*s2[3]-50*s1[3])+950*(500*s2[4]-70*s1[4]));
+
+	return (player==1)?w_score:b_score;
+	// return pow(-1,player-1)*((s1[0]-s2[0])+4*(s1[1]-s2[1])+24*(4*s1[2]-20*s2[2])+160*(s1[3]-50*s2[3])+950*(s1[4]-70*s2[4]));
+	// return pow(-1,player-1)*(7*(no_of_w_markers-no_of_b_markers)+19*(mobility_w_ring-mobility_b_ring));
 }

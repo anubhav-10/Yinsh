@@ -189,11 +189,11 @@ int main(int argc, char const *argv[])
 	// allvalidmoves y;
 	// y.getAllMoves(2,g,x,0);
 	// y.print();
-
+	no_of_moves=0;
 	game temp;
 	temp.initialize();
-	int id,n,t;
-	cin>>id>>n>>t;
+	int id,n,t,k;
+	cin>>id>>n>>t>>k;
 	cin.ignore();
 	game g;
 	AI player(id);
@@ -210,6 +210,10 @@ int main(int argc, char const *argv[])
 		}
 	}
 	while(!g.terminal()){
+		if(g.terminal()){
+			cerr << "Sucess exit"<<endl;
+			break;
+		}
 		// vector<moves> v=player.makeDecision(g);
 		pair<vector<moves>,game> z= player.makeDecision(g);
 		// cout<<"Ab"<<endl;
@@ -229,6 +233,10 @@ int main(int argc, char const *argv[])
 		// player.g.print();
 
 		// cin>>move;
+		if(g.terminal()){
+			cerr << "Sucess exit"<<endl;
+			break;
+		}
 		getline(cin,move);
 		v=convertToMyMove(move);
 		for(int i=0;i<v.size();i++){
@@ -240,6 +248,10 @@ int main(int argc, char const *argv[])
 			// cout<<endl;
 
 			g.performMove(v[i],opponet_id);
+		}
+		if(g.terminal()){
+			cerr << "Sucess exit"<<endl;
+			break;
 		}
 		// player.g.print();
 	}

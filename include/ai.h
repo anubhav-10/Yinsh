@@ -9,6 +9,8 @@
 #define pb push_back
 using namespace std;
 
+extern int no_of_moves;
+
 class AI{
 	int id;
 	int opponent_id;

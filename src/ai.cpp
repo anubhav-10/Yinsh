@@ -11,7 +11,7 @@ AI::AI(int id){
 	removedRings1=0;
 	removedRings2=0;
 }
-
+int no_of_moves;
 double AI::utility(int player){
 	int score=0;
 	if(removedRings1==3 && removedRings2==0)
@@ -48,6 +48,12 @@ double AI::utility(int player){
 }
 
 pair<vector<moves>,game> AI::makeDecision(game g){
+	int depth = 2;
+	if(no_of_moves>15){
+		depth = 2;
+	}
+	no_of_moves++;
+	cerr<<depth<<endl;
 	double resultValue=INT_MIN;
 	vector<moves> result;
 	game result_state;
@@ -61,7 +67,7 @@ pair<vector<moves>,game> AI::makeDecision(game g){
 		for(int j=0;j<p.allMoves[i].first.size();j++){
 			b.performMove(p.allMoves[i].first[j],id);
 		}
-		double value=maxValue(b,INT_MIN,numeric_limits<double>::max(),2);
+		double value=maxValue(b,INT_MIN,numeric_limits<double>::max(),depth);
 		// cerr<<value<<endl;
 		if(value > resultValue){
 			resultValue = value;
