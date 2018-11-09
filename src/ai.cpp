@@ -67,13 +67,13 @@ pair<vector<moves>,game> AI::makeDecision(game g){
 		for(int j=0;j<p.allMoves[i].first.size();j++){
 			b.performMove(p.allMoves[i].first[j],id);
 		}
-		double value=maxValue(b,INT_MIN,numeric_limits<double>::max(),depth);
+		double value=minValue(b,INT_MIN,numeric_limits<double>::max(),depth);
 		// cerr<<value<<endl;
 		if(value > resultValue){
 			resultValue = value;
 			result_state = p.allMoves[i].second;
 			result = p.allMoves[i].first;
-			// cout<<p.allMoves[i].size()<<endl;
+			final_features_value = features;
 		}
 	}
 	// cout<<result.size()<<endl;
@@ -113,7 +113,7 @@ double AI::maxValue(game g,double alpha,double beta,int depth){
 double AI::minValue(game g,double alpha,double beta,int depth){
 	if(g.terminal() || depth==0){
 		// return utility(opponent_id);
-		return g.eval(opponent_id);
+		return (-1)*g.eval(opponent_id);
 	}
 
 	double value = numeric_limits<double>::max();

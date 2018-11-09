@@ -10,6 +10,7 @@
 using namespace std;
 
 extern int no_of_moves;
+extern vector<int> final_features_value;
 
 class AI{
 	int id;

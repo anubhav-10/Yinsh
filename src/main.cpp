@@ -1,9 +1,112 @@
+#include <fstream>
 #include <iostream>
 #include <game.h>
 #include <ai.h>
 #include <string>
 using namespace std;
 int nom, nor;
+vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
+vector<double> weights;
+vector<int> final_features_value;
+
+vector<pair<int,int>> convert_to_vector(string s){
+    string temp="";
+    vector<pair<int,int>> v;
+    int n = 1, a = 0, b = 0;
+    for(auto i: s){
+        if(i == ' '){
+            if (n==1){
+                a = stoi(temp);
+                n++;
+            }
+            else{
+                b = stoi(temp);
+                v.pb({a,b});
+                n = 1;
+            }
+            temp = "";
+        }
+        else{
+            temp+=i;
+        }
+    }
+    return v;
+}
+
+void init_diagonal(){
+    string line;
+    if(nor==5){
+        ifstream file1("vert5");
+        while (getline(file1, line)){
+            // cout<<line<<endl;
+            vertical.pb(convert_to_vector(line));
+        }
+        file1.close();
+
+        // freopen("diag15","r",stdin);
+        ifstream file2("diag15");
+        while (getline(file2, line)){
+            // cout<<line<<endl;
+            diagonal1.pb(convert_to_vector(line));
+        }
+        file2.close();
+
+        ifstream file3("diag25");
+        while (getline(file3, line)){
+            // cout<<line<<endl;
+            diagonal2.pb(convert_to_vector(line));
+        }
+        file3.close();
+
+        // cout<<diagonal2.size()<<endl;
+        // for(auto u: diagonal2){
+        //     for(auto v: u){
+        //         cout<< v.first<<" "<<v.second<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+    }
+    else{
+        ifstream file1("vert6");
+        while (getline(file1, line)){
+            // cout<<line<<endl;
+            vertical.pb(convert_to_vector(line));
+        }
+        file1.close();
+
+        // freopen("diag15","r",stdin);
+        ifstream file2("diag16");
+        while (getline(file2, line)){
+            // cout<<line<<endl;
+            diagonal1.pb(convert_to_vector(line));
+        }
+        file2.close();
+
+        ifstream file3("diag26");
+        while (getline(file3, line)){
+            // cout<<line<<endl;
+            diagonal2.pb(convert_to_vector(line));
+        }
+        file3.close();
+
+        // cout<<vertical.size()<<endl;
+        // for(auto u: vertical){
+        //     for(auto v: u){
+        //         cout<< v.first<<" "<<v.second<<" ";
+        //     }
+        //     cout<<endl;
+        // }
+    }
+
+    ifstream file("weights");
+    double inp;
+    for(int i=0;i<14;i++){
+    	file>>inp;
+    	weights.pb(inp);
+    }
+    file.close();
+}
+
 
 vector<moves> convertToMyMove(string s){
 	vector<moves> result;
@@ -104,92 +207,6 @@ string convertTo(vector<moves> v){
 
 int main(int argc, char const *argv[])
 {
-	// game g;
-	// g.insertRing(2,1,1);
-	// g.insertRing(4,22,1);
-	// g.insertRing(1,3,1);
-	// g.insertRing(1,5,1);
-
-	// g.insertRing(2,0,2);
-	// g.insertRing(2,2,2);
-	// g.insertRing(1,4,2);
-	// g.insertRing(5,18,2);
-
-	// g.placeMarker(1,0,3);
-	// g.placeMarker(2,11,3);
-	// g.placeMarker(3,16,3);
-	// g.placeMarker(2,6,3);
-	// g.placeMarker(3,9,3);
-
-	// g.placeMarker(5,3,3);
-	// g.placeMarker(5,4,3);
-	
-	// g.placeMarker(4,3,3);
-	// g.placeMarker(4,4,3);
-	// g.placeMarker(5,6,3);
-
-	// g.placeMarker(5,7,3);
-
-	// g.placeMarker(3,4,3);
-	// g.placeMarker(5,8,3);
-
-	// g.placeMarker(4,7,3);
-	// g.placeMarker(5,9,3);
-
-	// g.placeMarker(2,4,3);
-	// g.placeMarker(4,8,3);
-
-	// g.placeMarker(3,7,3);
-	// g.placeMarker(4,9,3);
-	// g.placeMarker(5,11,3);
-
-	// g.placeMarker(5,12,3);
-	// g.placeMarker(5,13,3);
-	// g.placeMarker(5,14,3);
-
-	// g.placeMarker(5,29,4);
-	// g.placeMarker(4,22,4);
-	// g.placeMarker(3,16,4);
-	// g.placeMarker(2,7,4);
-	// g.placeMarker(3,10,4);
-
-	// g.placeMarker(4,0,4);
-	// g.placeMarker(4,12,4);
-
-	// g.placeMarker(5,1,4);
-	// g.placeMarker(1,1,4);
-	// g.placeMarker(1,2,4);
-	// g.placeMarker(2,5,4);
-	// g.placeMarker(3,8,4);
-	// g.placeMarker(4,11,4);
-
-	// g.placeMarker(5,2,4);
-	// g.placeMarker(4,2,4);
-	// g.placeMarker(3,2,4);
-	// g.placeMarker(2,3,4);
-	// g.placeMarker(4,10,4);
-
-	// g.placeMarker(3,3,4);
-	// g.placeMarker(3,5,4);
-	// g.placeMarker(3,6,4);
-
-	// g.placeMarker(4,5,4);
-	// g.placeMarker(4,6,4);
-
-	// g.insertRing(4,16,1);
-	// g.removeRing(4,16);
-	// g.insertRing(5,25,2);
-	// g.removeRing(5,25);
-
-	// vector<moves> x=g.getRunDown(2);
-	// for(int i=0;i<x.size();i++){
-	// 	cout<<x[i].type<<" ";
-	// 	cout<<x[i].coord[0]<<" "<<x[i].coord[1]<<" "<<x[i].coord[2]<<" "<<x[i].coord[3]<<" ";
-	// 	cout<<endl;
-	// }
-	// allvalidmoves y;
-	// y.getAllMoves(2,g,x,0);
-	// y.print();
 	no_of_moves=0;
 	// game temp;
 	// temp.initialize();
@@ -197,6 +214,7 @@ int main(int argc, char const *argv[])
 	cin>>id>>n>>t>>k;
 	nor = n;
 	nom = k;
+	init_diagonal();
 	cin.ignore();
 	game g;
 	AI player(id);
@@ -204,6 +222,13 @@ int main(int argc, char const *argv[])
 	// cout<<opponet_id;
 	string move;
 	vector<moves> v;
+	ofstream write;
+
+		if(id == 1)
+			write.open("features1");
+		else
+			write.open("features2");
+
 	if(id==2){
 		// cin>>move;
 		getline(cin,move);
@@ -217,47 +242,112 @@ int main(int argc, char const *argv[])
 			cerr << "Sucess exit"<<endl;
 			break;
 		}
-		// vector<moves> v=player.makeDecision(g);
 		pair<vector<moves>,game> z= player.makeDecision(g);
-		// cout<<"Ab"<<endl;
-
-		// for(int j=0;j<v.size();j++){
-		// 	cout<<v[j].type<<" ";
-		// 	for(int k=0;k<v[j].coord.size();k++)
-		// 		cout<<v[j].coord[k]<<" ";
-		// }
-		// cout<<endl;
-		// cout<<v.size();
 		cout<<convertTo(z.first)<<endl;
-		g = z.second;
-		// for(int i=0;i<v.size();i++){
-		// 	g.performMove(v[i],id);
-		// }
-		// player.g.print();
 
-		// cin>>move;
+		double reward = 0;
+		if(id == 1){
+			reward += z.second.removedWhite - g.removedWhite;
+			reward += g.removedBlack - z.second.removedBlack;
+			if(z.second.removedWhite == 3){
+				reward = 10;
+			}
+			if(z.second.removedBlack == 3){
+				reward = -10;
+			}
+		}
+		else{
+			reward += z.second.removedBlack - g.removedBlack;
+			reward += g.removedWhite - z.second.removedWhite;
+			if(z.second.removedWhite == 3){
+				reward = -10;
+			}
+			if(z.second.removedBlack == 3){
+				reward = 10;
+			}
+		}
+
+
+		g = z.second;
+
+		if(g.terminal()){
+			if(id == 1 && g.removedWhite == 3)
+				reward = 10;
+			else if(id == 1 && g.removedBlack == 3)
+				reward = -10;
+
+			if(id == 2 && g.removedBlack == 3)
+				reward = 10;
+			else if(id == 2 && g.removedWhite == 3)
+				reward = -10;
+	
+			write << g.removedWhite << " " << g.removedBlack << " ";
+			for(auto u: final_features_value){
+				write << u << " ";
+			}
+			write << reward << endl;
+
+		}
+
+		// write << g.removedWhite << " " << g.removedBlack << " ";
+
+		// cerr << g.removedWhite << " " << g.removedBlack << " ";
+	
+		// for(auto u: final_features_value){
+		// 	write << u << " ";
+		// 	cerr << u <<  " ";
+		// }
+		// write << reward << endl;
+		// cerr << reward <<endl;
+
 		if(g.terminal()){
 			cerr << "Sucess exit"<<endl;
 			break;
 		}
 		getline(cin,move);
 		v=convertToMyMove(move);
-		for(int i=0;i<v.size();i++){
-			// for(int j=0;j<v.size();j++){
-			// 	cout<<v[j].type<<" ";
-			// 	for(int k=0;k<v[j].coord.size();k++)
-			// 		cout<<v[j].coord[k]<<" ";
-			// }
-			// cout<<endl;
 
-			g.performMove(v[i],opponet_id);
+		game xyz = g;
+
+		for(int i=0;i<v.size();i++){
+			xyz.performMove(v[i],opponet_id);
 		}
-		if(g.terminal()){
-			cerr << "Sucess exit"<<endl;
-			break;
+		// double reward = 0;
+		if(id == 1){
+			reward += xyz.removedWhite - g.removedWhite;
+			reward += g.removedBlack - xyz.removedBlack;
+			if(xyz.removedWhite == 3){
+				reward = 10;
+			}
+			if(xyz.removedBlack == 3){
+				reward = -10;
+			}
 		}
-		// player.g.print();
+		else{
+			reward += xyz.removedBlack - g.removedBlack;
+			reward += g.removedWhite - xyz.removedWhite;
+			if(xyz.removedWhite == 3){
+				reward = -10;
+			}
+			if(xyz.removedBlack == 3){
+				reward = 10;
+			}
+		}
+
+		g = xyz;
+
+		write << g.removedWhite << " " << g.removedBlack << " ";
+
+		cerr << g.removedWhite << " " << g.removedBlack << " ";
+	
+		for(auto u: final_features_value){
+			write << u << " ";
+			cerr << u <<  " ";
+		}
+		write << reward << endl;
+		cerr << reward <<endl;
 	}
+	write.close();
 
 	return 0;
 }

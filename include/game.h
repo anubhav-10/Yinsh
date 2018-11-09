@@ -10,12 +10,16 @@
 using namespace std;
 extern map<tuple<int,int,int,int>,int> direct;
 extern int no_of_moves, nor, nom;
+extern vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
+extern vector<double> weights;
+extern vector<int> features;
 
 class game{
 	vector<vector<int>> state;
 	vector<pair<int,int>> white,black;
-	int removedWhite,removedBlack;
+	// int removedWhite,removedBlack;
 	public:
+	int removedWhite,removedBlack;
 		game();
 		void initialize();
 		void placeMarker(int x,int y,int e); // for testing purposes
@@ -52,6 +56,7 @@ class game{
 		vector<moves> getRunSW(int player);
 		vector<moves> getRunSWUtil(int player,int startx,int a,int b);
 		// evaluation function
+		vector<int> get_features();
 		double markerScore(int player);
 		double markerScoreDown(int player);
 		double markerScoreDownUtil(int player,int startx,int a,int b);
