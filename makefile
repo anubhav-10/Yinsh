@@ -11,7 +11,7 @@ _DEPS = game.h
 
 DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
 
-_OBJ = auxiliary.o validmoves.o game.o performmoves.o evaluation.o allvalidmoves.o ai.o main.o
+_OBJ = auxiliary.o validmoves.o game.o performmoves.o eval.o evaluation.o allvalidmoves.o ai.o main.o
 OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 

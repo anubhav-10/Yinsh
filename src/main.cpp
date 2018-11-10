@@ -6,7 +6,7 @@
 using namespace std;
 int nom, nor;
 vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
-vector<double> weights;
+vector<double> weights1, weights2;
 vector<int> final_features_value;
 
 vector<pair<int,int>> convert_to_vector(string s){
@@ -98,13 +98,21 @@ void init_diagonal(){
         // }
     }
 
-    ifstream file("weights");
+    ifstream file("weights1");
     double inp;
-    for(int i=0;i<14;i++){
+    for(int i=0;i<16;i++){
     	file>>inp;
-    	weights.pb(inp);
+    	weights1.pb(inp);
     }
     file.close();
+
+    ifstream filez("weights2");
+    // double inp;
+    for(int i=0;i<16;i++){
+    	filez>>inp;
+    	weights2.pb(inp);
+    }
+    filez.close();
 }
 
 
@@ -281,7 +289,6 @@ int main(int argc, char const *argv[])
 			else if(id == 2 && g.removedWhite == 3)
 				reward = -10;
 	
-			write << g.removedWhite << " " << g.removedBlack << " ";
 			for(auto u: final_features_value){
 				write << u << " ";
 			}
@@ -336,10 +343,6 @@ int main(int argc, char const *argv[])
 
 		g = xyz;
 
-		write << g.removedWhite << " " << g.removedBlack << " ";
-
-		cerr << g.removedWhite << " " << g.removedBlack << " ";
-	
 		for(auto u: final_features_value){
 			write << u << " ";
 			cerr << u <<  " ";

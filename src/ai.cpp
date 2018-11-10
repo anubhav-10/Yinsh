@@ -49,10 +49,7 @@ double AI::utility(int player){
 
 pair<vector<moves>,game> AI::makeDecision(game g){
 	int depth = 2;
-	if(no_of_moves>15){
-		depth = 2;
-	}
-	no_of_moves++;
+	// no_of_moves++;
 	cerr<<depth<<endl;
 	double resultValue=INT_MIN;
 	vector<moves> result;
@@ -113,7 +110,7 @@ double AI::maxValue(game g,double alpha,double beta,int depth){
 double AI::minValue(game g,double alpha,double beta,int depth){
 	if(g.terminal() || depth==0){
 		// return utility(opponent_id);
-		return (-1)*g.eval(opponent_id);
+		return g.eval(opponent_id);
 	}
 
 	double value = numeric_limits<double>::max();

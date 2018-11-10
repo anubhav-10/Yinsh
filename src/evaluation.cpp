@@ -4,7 +4,7 @@
 using namespace std;
 vector<int> features;
 
-vector<int> game::get_features(){
+vector<int> game::get_features(int player){
     int s1[] = {0 ,0, 0, 0, 0, 0};
     int s2[] = {0 ,0, 0, 0, 0, 0};
 
@@ -110,14 +110,47 @@ vector<int> game::get_features(){
             }
         }
     }
-    vector<int> ret(s1, s1 + 6);
-    for(int i=0;i<6;i++)
-    	ret.pb(s2[i]);
+    double white_mobility = mobilityScore(1);
+    double black_mobility = mobilityScore(2);
+    vector<int> ret;
+    if(player == 1){
+    	ret.pb(removedWhite);
+	    for(int i=0;i<6;i++)
+	    	ret.pb(s1[i]);
+	    ret.pb(white_mobility);
+    	ret.pb(removedBlack);
+	    for(int i=0;i<6;i++)
+	    	ret.pb(s2[i]);
+	    ret.pb(black_mobility);
+    }
+    else{
+    	ret.pb(removedBlack);
+	    for(int i=0;i<6;i++)
+	    	ret.pb(s2[i]);
+	    ret.pb(black_mobility);
+    	ret.pb(removedWhite);
+	    for(int i=0;i<6;i++)
+	    	ret.pb(s1[i]);
+	    ret.pb(white_mobility);
+    }
     return ret;
 }
 
 double game::eval(int player){
-	features = get_features();
+	features = get_features(player);
 
-    return pow(-1,player+1)*(weights[0]*removedWhite-weights[1]*removedBlack +weights[2]*features[0]- weights[8] *features[6] + weights[3]*features[1]-weights[9]*features[7] + weights[4]*features[2]-weights[10]*features[8] + weights[5]*features[3]-weights[11]*features[9] + weights[6]*features[4]-weights[12]*features[10] + weights[7]*features[5]-weights[13]*features[11]);
+	double ret = 0;
+	if(player == 1){
+		for(int i=0;i<16;i++)
+			ret += features[i] * weights1[i];
+	}
+	else{
+		for(int i=0;i<16;i++)
+			ret += features[i] * weights2[i];
+	}
+
+	return ret;
+	// if(player == 1)
+    // else
+    // 	(weights[0]*removedBlack + weights[1]*removedWhite +weights[2]*features[6] + weights[8] *features[0] + weights[3]*features[7] + weights[9]*features[1] + weights[4]*features[8] + weights[10]*features[2] + weights[5]*features[9] + weights[11]*features[3] + weights[6]*features[10] + weights[12]*features[4] + weights[7]*features[11] + weights[13]*features[5]);
 }
