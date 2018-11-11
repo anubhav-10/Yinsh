@@ -11,7 +11,7 @@ using namespace std;
 extern map<tuple<int,int,int,int>,int> direct;
 extern int no_of_moves, nor, nom;
 extern vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
-extern vector<double> weights1, weights2;
+extern vector<double> weights1;
 extern vector<int> features;
 
 class game{

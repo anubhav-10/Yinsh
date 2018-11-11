@@ -6,7 +6,7 @@
 using namespace std;
 int nom, nor;
 vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
-vector<double> weights1, weights2;
+vector<double> weights1 {100000000, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000 -100000000, -1, -10, -100, -1000, -10000, -100000, -1000000, -10000};
 vector<int> final_features_value;
 
 vector<pair<int,int>> convert_to_vector(string s){
@@ -98,21 +98,14 @@ void init_diagonal(){
         // }
     }
 
-    ifstream file("weights1");
-    double inp;
-    for(int i=0;i<16;i++){
-    	file>>inp;
-    	weights1.pb(inp);
-    }
-    file.close();
-
-    ifstream filez("weights2");
+    // weights1 = {}
+    // ifstream file("weights1");
     // double inp;
-    for(int i=0;i<16;i++){
-    	filez>>inp;
-    	weights2.pb(inp);
-    }
-    filez.close();
+    // for(int i=0;i<16;i++){
+    // 	file>>inp;
+    // 	weights1.pb(inp);
+    // }
+    // file.close();
 }
 
 
