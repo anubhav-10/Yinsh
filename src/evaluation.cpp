@@ -110,28 +110,22 @@ vector<int> game::get_features(int player){
             }
         }
     }
-    double white_mobility = mobilityScore(1);
-    double black_mobility = mobilityScore(2);
     vector<int> ret;
     if(player == 1){
     	ret.pb(removedWhite);
 	    for(int i=0;i<6;i++)
 	    	ret.pb(s1[i]);
-	    ret.pb(white_mobility);
-    	ret.pb(removedBlack);
+    	ret.pb((-1)*removedBlack);
 	    for(int i=0;i<6;i++)
-	    	ret.pb(s2[i]);
-	    ret.pb(black_mobility);
+	    	ret.pb((-1)*s2[i]);
     }
     else{
     	ret.pb(removedBlack);
 	    for(int i=0;i<6;i++)
 	    	ret.pb(s2[i]);
-	    ret.pb(black_mobility);
-    	ret.pb(removedWhite);
+    	ret.pb((-1)*removedWhite);
 	    for(int i=0;i<6;i++)
-	    	ret.pb(s1[i]);
-	    ret.pb(white_mobility);
+	    	ret.pb((-1)*s1[i]);
     }
     return ret;
 }
@@ -141,12 +135,12 @@ double game::eval(int player){
 
 	double ret = 0;
 	if(player == 1){
-		for(int i=0;i<16;i++)
+		for(int i=0;i<14;i++)
 			ret += features[i] * weights1[i];
 	}
 	else{
-		for(int i=0;i<16;i++)
-			ret += features[i] * weights2[i];
+		for(int i=0;i<14;i++)
+			ret += features[i] * weights1[i];
 	}
 
 	return ret;

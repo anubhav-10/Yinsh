@@ -225,6 +225,7 @@ int main(int argc, char const *argv[])
 	init_diagonal();
 	cin.ignore();
 	game g;
+	// g.print();
 	AI player(id);
 	int opponet_id=(id==1)?2:1;
 	// cout<<opponet_id;
@@ -253,48 +254,48 @@ int main(int argc, char const *argv[])
 		pair<vector<moves>,game> z= player.makeDecision(g);
 		cout<<convertTo(z.first)<<endl;
 
-		double reward = 0;
-		if(id == 1){
-			reward += z.second.removedWhite - g.removedWhite;
-			reward += g.removedBlack - z.second.removedBlack;
-			if(z.second.removedWhite == 3){
-				reward = 10;
-			}
-			if(z.second.removedBlack == 3){
-				reward = -10;
-			}
-		}
-		else{
-			reward += z.second.removedBlack - g.removedBlack;
-			reward += g.removedWhite - z.second.removedWhite;
-			if(z.second.removedWhite == 3){
-				reward = -10;
-			}
-			if(z.second.removedBlack == 3){
-				reward = 10;
-			}
-		}
+		// double reward = 0;
+		// if(id == 1){
+		// 	reward += z.second.removedWhite - g.removedWhite;
+		// 	reward += g.removedBlack - z.second.removedBlack;
+		// 	if(z.second.removedWhite == 3){
+		// 		reward = 10;
+		// 	}
+		// 	if(z.second.removedBlack == 3){
+		// 		reward = -10;
+		// 	}
+		// }
+		// else{
+		// 	reward += z.second.removedBlack - g.removedBlack;
+		// 	reward += g.removedWhite - z.second.removedWhite;
+		// 	if(z.second.removedWhite == 3){
+		// 		reward = -10;
+		// 	}
+		// 	if(z.second.removedBlack == 3){
+		// 		reward = 10;
+		// 	}
+		// }
 
 
 		g = z.second;
 
-		if(g.terminal()){
-			if(id == 1 && g.removedWhite == 3)
-				reward = 10;
-			else if(id == 1 && g.removedBlack == 3)
-				reward = -10;
+		// if(g.terminal()){
+		// 	if(id == 1 && g.removedWhite == 3)
+		// 		reward = 10;
+		// 	else if(id == 1 && g.removedBlack == 3)
+		// 		reward = -10;
 
-			if(id == 2 && g.removedBlack == 3)
-				reward = 10;
-			else if(id == 2 && g.removedWhite == 3)
-				reward = -10;
+		// 	if(id == 2 && g.removedBlack == 3)
+		// 		reward = 10;
+		// 	else if(id == 2 && g.removedWhite == 3)
+		// 		reward = -10;
 	
-			for(auto u: final_features_value){
-				write << u << " ";
-			}
-			write << reward << endl;
+		// 	for(auto u: final_features_value){
+		// 		write << u << " ";
+		// 	}
+		// 	write << reward << endl;
 
-		}
+		// }
 
 		// write << g.removedWhite << " " << g.removedBlack << " ";
 
@@ -320,35 +321,35 @@ int main(int argc, char const *argv[])
 			xyz.performMove(v[i],opponet_id);
 		}
 		// double reward = 0;
-		if(id == 1){
-			reward += xyz.removedWhite - g.removedWhite;
-			reward += g.removedBlack - xyz.removedBlack;
-			if(xyz.removedWhite == 3){
-				reward = 10;
-			}
-			if(xyz.removedBlack == 3){
-				reward = -10;
-			}
-		}
-		else{
-			reward += xyz.removedBlack - g.removedBlack;
-			reward += g.removedWhite - xyz.removedWhite;
-			if(xyz.removedWhite == 3){
-				reward = -10;
-			}
-			if(xyz.removedBlack == 3){
-				reward = 10;
-			}
-		}
+		// if(id == 1){
+		// 	reward += xyz.removedWhite - g.removedWhite;
+		// 	reward += g.removedBlack - xyz.removedBlack;
+		// 	if(xyz.removedWhite == 3){
+		// 		reward = 10;
+		// 	}
+		// 	if(xyz.removedBlack == 3){
+		// 		reward = -10;
+		// 	}
+		// }
+		// else{
+		// 	reward += xyz.removedBlack - g.removedBlack;
+		// 	reward += g.removedWhite - xyz.removedWhite;
+		// 	if(xyz.removedWhite == 3){
+		// 		reward = -10;
+		// 	}
+		// 	if(xyz.removedBlack == 3){
+		// 		reward = 10;
+		// 	}
+		// }
 
 		g = xyz;
 
-		for(auto u: final_features_value){
-			write << u << " ";
-			cerr << u <<  " ";
-		}
-		write << reward << endl;
-		cerr << reward <<endl;
+		// for(auto u: final_features_value){
+		// 	write << u << " ";
+		// 	cerr << u <<  " ";
+		// }
+		// write << reward << endl;
+		// cerr << reward <<endl;
 	}
 	write.close();
 

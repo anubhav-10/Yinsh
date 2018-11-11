@@ -16,7 +16,8 @@ game::game(){
 		vector<int> v;
 		if(i==0) v.push_back(0);
 		for(int j=0;j<6*i;j++){
-			if(i==5 && j%5==0) v.pb(-1);
+			if(i==5 && j%5==0 && nor == 5) v.pb(-1);
+			else if(i == 6 && j%6==0 && nor == 6) v.pb(-1);
 			else if(i==nor+1) v.pb(-1);
 			else v.pb(0);
 		}
