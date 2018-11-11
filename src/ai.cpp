@@ -3,6 +3,7 @@
 #include <climits>
 #include <ai.h>
 #include <limits>
+#include <algorithm>
 using namespace std;
 
 AI::AI(int id){
@@ -12,40 +13,17 @@ AI::AI(int id){
 	removedRings2=0;
 }
 int no_of_moves;
-double AI::utility(int player){
-	int score=0;
-	if(removedRings1==3 && removedRings2==0)
-		score = 10;
-	else if(removedRings1==3 && removedRings2==1)
-		score = 9;
-	else if(removedRings1==3 && removedRings2==2)
-		score = 8;
-	else if(removedRings1==2 && removedRings2==0)
-		score = 7;
-	else if(removedRings1==2 && removedRings2==1)
-		score = 6;
-	else if(removedRings1==1 && removedRings2==0)
-		score = 6;
-	else if(removedRings1==2 && removedRings2==2)
-		score = 5;
-	else if(removedRings1==1 && removedRings2==1)
-		score = 5;
-	else if(removedRings1==0 && removedRings2==0)
-		score = 5;
-	else if(removedRings1==0 && removedRings2==1)
-		score = 4;
-	else if(removedRings1==1 && removedRings2==2)
-		score = 4;
-	else if(removedRings1==0 && removedRings2==2)
-		score = 3;
-	else if(removedRings1==2 && removedRings2==3)
-		score = 2;
-	else if(removedRings1==1 && removedRings2==3)
-		score = 1;
-	else if(removedRings1==0 && removedRings2==3)
-		score = 0;
-	return (player==1)?score:(10-score);
-}
+
+struct sort_inc{
+	bool operator()(const std::pair<vector<moves>, double> &left, const std::pair<vector<moves>, double> &right){
+		return left.second < right.second;
+	}
+};
+struct sort_dec{
+	bool operator()(const std::pair<vector<moves>, double> &left, const std::pair<vector<moves>, double> &right){
+		return left.second > right.second;
+	}
+};
 
 pair<vector<moves>,game> AI::makeDecision(game g){
 	int depth = 2;
@@ -58,6 +36,12 @@ pair<vector<moves>,game> AI::makeDecision(game g){
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(id,g,v,0);
+
+	// vector<pair<game, double>> sorted;
+	// for(int i=0;i<p.allMoves.size();i++){
+	// 	sorted.pb({p.allMoves[i].second, p.allMoves[i].second.eval(id)});
+	// }
+	sort(p.allMoves.begin(), p.allMoves.end(), sort_inc());
 	// cout<<p.allMoves.size()<<endl;
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
@@ -68,7 +52,7 @@ pair<vector<moves>,game> AI::makeDecision(game g){
 		// cerr<<value<<endl;
 		if(value > resultValue){
 			resultValue = value;
-			result_state = p.allMoves[i].second;
+			result_state = b;
 			result = p.allMoves[i].first;
 			final_features_value = features;
 		}
@@ -93,6 +77,12 @@ double AI::maxValue(game g,double alpha,double beta,int depth){
 	if(p.allMoves.size()==0)
 		return g.eval(id);
 		// return utility(id);
+	// vector<pair<game, double>> sorted;
+	// for(int i=0;i<p.allMoves.size();i++){
+	// 	sorted.pb({p.allMoves[i].second, p.allMoves[i].second.eval(id)});
+	// }
+	if(depth != 1)
+		sort(p.allMoves.begin(), p.allMoves.end(), sort_inc());
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;
@@ -110,7 +100,7 @@ double AI::maxValue(game g,double alpha,double beta,int depth){
 double AI::minValue(game g,double alpha,double beta,int depth){
 	if(g.terminal() || depth==0){
 		// return utility(opponent_id);
-		return g.eval(opponent_id);
+		return g.eval(id);
 	}
 
 	double value = numeric_limits<double>::max();
@@ -123,9 +113,16 @@ double AI::minValue(game g,double alpha,double beta,int depth){
 
 	// cout<<p.allMoves.size()<<endl;
 	if(p.allMoves.size()==0){
-		return g.eval(opponent_id);
+		return g.eval(id);
 		// return utility(opponent_id);
 	}
+
+	// vector<pair<game, double>> sorted;
+	// for(int i=0;i<p.allMoves.size();i++){
+	// 	sorted.pb({p.allMoves[i].second, p.allMoves[i].second.eval(opponent_id)});
+	// }
+	if(depth != 1)
+		sort(p.allMoves.begin(), p.allMoves.end(), sort_dec());
 
 	for(int i=0;i<p.allMoves.size();i++){
 		game b=g;

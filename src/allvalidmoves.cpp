@@ -4,7 +4,7 @@ using namespace std;
 
 void allvalidmoves::getAllMoves(int player,game g,vector<moves> v,bool moveMade){
 	if(g.terminal()){
-		allMoves.pb(make_pair(v,g));
+		allMoves.pb(make_pair(v,g.eval(player)));
 		return;
 	}
 
@@ -28,7 +28,7 @@ void allvalidmoves::getAllMoves(int player,game g,vector<moves> v,bool moveMade)
 		return;
 	}
 	if(moveMade){
-		allMoves.pb(make_pair(v,g));
+		allMoves.pb(make_pair(v,g.eval(player)));
 		return;
 	}
 

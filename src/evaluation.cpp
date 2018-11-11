@@ -9,6 +9,8 @@ vector<int> game::get_features(int player){
     int s2[] = {0 ,0, 0, 0, 0, 0};
 
     int count = 0, x, y;
+    int mymarker = (player == 1)?3:4;
+    int oppmarker = (player == 1)?4:3;
     int white_marker = 3;
     int black_marker = 4;
     int count1 = 0;
@@ -17,9 +19,10 @@ vector<int> game::get_features(int player){
         count = 0;
         count1 = 0;
         for(auto v: u){
+	        // k markers in row
             x = v.first;
             y = v.second;
-            if(state[x][y] == white_marker){
+            if(state[x][y] == mymarker){
                 count++;
             }
             else{
@@ -31,7 +34,7 @@ vector<int> game::get_features(int player){
                 count--;
             }
             // opponent
-            if(state[x][y] == black_marker){
+            if(state[x][y] == mymarker){
                 count1++;
             }
             else{
@@ -42,16 +45,20 @@ vector<int> game::get_features(int player){
                 s2[count1-1]++;
                 count1--;
             }
+
+            // 
+
         }
     }
 
     for(auto u: diagonal1){
         count = 0;
         count1 = 0;
-        for(auto v: u){
+        for(auto v: u){	
+        	// k markers in row
             x = v.first;
             y = v.second;
-            if(state[x][y] == white_marker){
+            if(state[x][y] == mymarker){
                 count++;
             }
             else{
@@ -64,7 +71,7 @@ vector<int> game::get_features(int player){
                 count--;
             }
             // opponent
-            if(state[x][y] == black_marker){
+            if(state[x][y] == oppmarker){
                 count1++;
             }
             else{
@@ -82,9 +89,10 @@ vector<int> game::get_features(int player){
         count = 0;
         count1 = 0;
         for(auto v: u){
+        	// k markers in row
             x = v.first;
             y = v.second;
-            if(state[x][y] == white_marker){
+            if(state[x][y] == mymarker){
                 count++;
             }
             else{
@@ -97,7 +105,7 @@ vector<int> game::get_features(int player){
                 count--;
             }
             // opponent
-            if(state[x][y] == black_marker){
+            if(state[x][y] == oppmarker){
                 count1++;
             }
             else{
