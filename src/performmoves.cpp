@@ -4,7 +4,7 @@ using namespace std;
 
 void game::insertRing(int x,int y,int element){ // element = player
 	state[x][y]=element;
-	cerr << "abc" <<endl;
+	// cerr << "abc" <<endl;
 	if(element==1)
 		white.pb(make_pair(x,y));
 	else

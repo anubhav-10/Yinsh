@@ -1,0 +1,603 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  us/call  us/call  name    
+ 57.03     62.37    62.37                             game::get_features(int)
+  7.62     70.70     8.33 2523035865     0.00     0.00  game::get2(int, int)
+  7.36     78.74     8.05 2504071650     0.00     0.00  game::get3(int, int)
+  5.96     85.26     6.52 2467294488     0.00     0.00  game::get4(int, int)
+  3.66     89.26     4.00 49235949     0.08     0.21  game::getRunSWUtil(int, int, int, int)
+  3.35     92.92     3.67 49235949     0.07     0.24  game::getRunSEUtil(int, int, int, int)
+  3.34     96.58     3.66 49235949     0.07     0.23  game::getRunDownUtil(int, int, int, int)
+  2.62     99.44     2.86                             allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool)
+  1.47    101.05     1.61 192882797     0.01     0.01  void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+  1.26    102.43     1.38 24566611     0.06     0.10  game::getDirection(int, int, int, int)
+  1.02    103.54     1.11   402755     2.76     5.61  AI::minValue(game, double, double, int)
+  0.75    104.35     0.82 142212408     0.01     0.01  void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag)
+  0.48    104.88     0.53 31738791     0.02     0.02  void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&)
+  0.44    105.37     0.49 33643935     0.01     0.01  game::get1(int, int)
+  0.40    105.80     0.44                             void std::vector<int, std::allocator<int> >::emplace_back<int>(int&&)
+  0.37    106.21     0.41                             game::eval(int)
+  0.30    106.54     0.33 16411983     0.02     0.66  game::getRunSW(int)
+  0.30    106.86     0.33 16411983     0.02     0.74  game::getRunSE(int)
+  0.29    107.18     0.32 16411983     0.02     0.73  game::getRunDown(int)
+  0.27    107.47     0.29 23611625     0.01     0.02  game::flip(int, int, int, int, int)
+  0.24    107.73     0.26   441168     0.59     3.46  game::validMoves(int)
+  0.21    107.97     0.24 23611625     0.01     0.11  game::moveRing(int, int, int, int)
+  0.21    108.20     0.23 16411983     0.01     2.16  game::getRun(int)
+  0.17    108.39     0.19   822663     0.23     0.23  void std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > >::_M_realloc_insert<std::pair<std::vector<moves, std::allocator<moves> >, double> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, std::pair<std::vector<moves, std::allocator<moves> >, double>&&)
+  0.13    108.53     0.14 33242208     0.00     0.00  game::get0(int, int)
+  0.11    108.65     0.12  8028021     0.01     0.05  AI::maxValue(game, double, double, int)
+  0.10    108.76     0.11  1819424     0.06     0.14  game::getValid4(int, int)
+  0.08    108.85     0.09  1819424     0.05     0.11  game::getValid3(int, int)
+  0.06    108.92     0.07  1819424     0.04     0.09  game::getValid0(int, int)
+  0.05    108.98     0.06  1819424     0.03     0.10  game::getValid2(int, int)
+  0.05    109.04     0.06  1819424     0.03     0.10  game::getValid5(int, int)
+  0.05    109.09     0.05 26354959     0.00     0.00  game::performMove(moves, int)
+  0.05    109.14     0.05  1819424     0.03     0.11  game::getValid1(int, int)
+  0.05    109.19     0.05   273999     0.18     0.31  game::validRemoveRing(int)
+  0.04    109.23     0.05 13715282     0.00     0.00  game::get5(int, int)
+  0.03    109.26     0.03 25154834     0.00     0.00  game::terminal()
+  0.02    109.29     0.03                             std::vector<moves, std::allocator<moves> >::~vector()
+  0.02    109.31     0.03                             std::vector<int, std::allocator<int> >::~vector()
+  0.01    109.32     0.01    29462     0.34     0.34  void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+  0.01    109.33     0.01                             allvalidmoves::completeMove(int, game, std::vector<moves, std::allocator<moves> >)
+  0.01    109.34     0.01                             game::getRegion(int, int)
+  0.01    109.35     0.01                             std::map<std::tuple<int, int, int, int>, int, std::less<std::tuple<int, int, int, int> >, std::allocator<std::pair<std::tuple<int, int, int, int> const, int> > >::~map()
+  0.00    109.36     0.01                             markerScoreDownUtil(int, int, int, int)
+  0.00    109.36     0.01                             game::removeRing(int, int)
+  0.00    109.36     0.00   954936     0.00     0.11  game::removeRun(int, int, int, int)
+  0.00    109.36     0.00    95461     0.00     0.00  void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+  0.00    109.36     0.00    29462     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+  0.00    109.36     0.00     2050     0.00     0.00  void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+  0.00    109.36     0.00      942     0.00     0.00  void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+  0.00    109.36     0.00      942     0.00     0.00  void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+  0.00    109.36     0.00      141     0.00     0.00  void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&)
+  0.00    109.36     0.00      120     0.00     0.00  std::vector<moves, std::allocator<moves> >::operator=(std::vector<moves, std::allocator<moves> > const&)
+  0.00    109.36     0.00      110     0.00     0.00  void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  0.00    109.36     0.00      108     0.00     0.00  std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.194]
+  0.00    109.36     0.00       36     0.00     0.00  game::insertRing(int, int, int)
+  0.00    109.36     0.00       33     0.00     0.00  convert_to_vector(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >)
+  0.00    109.36     0.00       15     0.00     0.00  void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >&&)
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__Z19markerScoreDownUtiliiii
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN2AIC2Ei
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4game10insertRingEiii
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I__ZN4game10validMovesEi
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I_direct
+  0.00    109.36     0.00        1     0.00     0.00  _GLOBAL__sub_I_nom
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.01% of 109.36 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     58.1   62.37    1.20                 game::get_features(int) [1]
+                1.20    0.00 144292644/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     38.6    2.86   39.35                 allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+                0.23   35.15 16411983/16411983     game::getRun(int) [3]
+                0.15    1.51 15184398/23611625     game::moveRing(int, int, int, int) [15]
+                0.26    1.27  441168/441168      game::validMoves(int) [19]
+                0.19    0.15 15184398/23611625     game::flip(int, int, int, int, int) [22]
+                0.28    0.00 16565840/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.05    0.03  273999/273999      game::validRemoveRing(int) [36]
+                0.03    0.00 16565840/26354959     game::performMove(moves, int) [37]
+                0.00    0.03  273999/954936      game::removeRun(int, int, int, int) [35]
+                0.02    0.00 16724058/25154834     game::terminal() [39]
+                0.00    0.00      18/36          game::insertRing(int, int, int) [65]
+-----------------------------------------------
+                0.23   35.15 16411983/16411983     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[3]     32.4    0.23   35.15 16411983         game::getRun(int) [3]
+                0.33   11.83 16411983/16411983     game::getRunSE(int) [4]
+                0.32   11.60 16411983/16411983     game::getRunDown(int) [5]
+                0.33   10.56 16411983/16411983     game::getRunSW(int) [8]
+                0.19    0.00 32823966/142212408     void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+-----------------------------------------------
+                0.33   11.83 16411983/16411983     game::getRun(int) [3]
+[4]     11.1    0.33   11.83 16411983         game::getRunSE(int) [4]
+                3.67    7.98 49235949/49235949     game::getRunSEUtil(int, int, int, int) [6]
+                0.19    0.00 32823966/142212408     void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+-----------------------------------------------
+                0.32   11.60 16411983/16411983     game::getRun(int) [3]
+[5]     10.9    0.32   11.60 16411983         game::getRunDown(int) [5]
+                3.66    7.76 49235949/49235949     game::getRunDownUtil(int, int, int, int) [7]
+                0.19    0.00 32823966/142212408     void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+-----------------------------------------------
+                3.67    7.98 49235949/49235949     game::getRunSE(int) [4]
+[6]     10.6    3.67    7.98 49235949         game::getRunSEUtil(int, int, int, int) [6]
+                7.98    0.00 2416423150/2523035865     game::get2(int, int) [10]
+                0.00    0.00   71055/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.00    0.00   23685/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                3.66    7.76 49235949/49235949     game::getRunDown(int) [5]
+[7]     10.4    3.66    7.76 49235949         game::getRunDownUtil(int, int, int, int) [7]
+                7.75    0.00 2412001480/2504071650     game::get3(int, int) [11]
+                0.01    0.00  609624/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.00    0.00  203196/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                0.33   10.56 16411983/16411983     game::getRun(int) [3]
+[8]     10.0    0.33   10.56 16411983         game::getRunSW(int) [8]
+                4.00    6.37 49235949/49235949     game::getRunSWUtil(int, int, int, int) [9]
+                0.19    0.00 32823966/142212408     void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+-----------------------------------------------
+                4.00    6.37 49235949/49235949     game::getRunSW(int) [8]
+[9]      9.5    4.00    6.37 49235949         game::getRunSWUtil(int, int, int, int) [9]
+                6.37    0.00 2411944177/2467294488     game::get4(int, int) [12]
+                0.00    0.00  141318/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.00    0.00   47106/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                0.00    0.00  231292/2523035865     game::removeRun(int, int, int, int) [35]
+                0.02    0.00 5157736/2523035865     game::getValid2(int, int) [32]
+                0.03    0.00 8410964/2523035865     game::flip(int, int, int, int, int) [22]
+                0.31    0.00 92812723/2523035865     game::getDirection(int, int, int, int) [16]
+                7.98    0.00 2416423150/2523035865     game::getRunSEUtil(int, int, int, int) [6]
+[10]     7.6    8.33    0.00 2523035865         game::get2(int, int) [10]
+-----------------------------------------------
+                0.01    0.00 3155440/2504071650     game::removeRun(int, int, int, int) [35]
+                0.01    0.00 4214055/2504071650     game::getValid3(int, int) [29]
+                0.03    0.00 8797139/2504071650     game::flip(int, int, int, int, int) [22]
+                0.24    0.00 75903536/2504071650     game::getDirection(int, int, int, int) [16]
+                7.75    0.00 2412001480/2504071650     game::getRunDownUtil(int, int, int, int) [7]
+[11]     7.4    8.05    0.00 2504071650         game::get3(int, int) [11]
+-----------------------------------------------
+                0.00    0.00  433028/2467294488     game::removeRun(int, int, int, int) [35]
+                0.02    0.00 5926205/2467294488     game::getValid4(int, int) [27]
+                0.03    0.00 11075986/2467294488     game::flip(int, int, int, int, int) [22]
+                0.10    0.00 37915092/2467294488     game::getDirection(int, int, int, int) [16]
+                6.37    0.00 2411944177/2467294488     game::getRunSWUtil(int, int, int, int) [9]
+[12]     6.0    6.52    0.00 2467294488         game::get4(int, int) [12]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     2.4    0.00    2.65                 AI::makeDecision(game) [13]
+                1.23    1.42     942/942         AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.00    0.00     569/822663      void std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > >::_M_realloc_insert<std::pair<std::vector<moves, std::allocator<moves> >, double> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, std::pair<std::vector<moves, std::allocator<moves> >, double>&&) [30]
+                0.00    0.00     937/23611625     game::moveRing(int, int, int, int) [15]
+                0.00    0.00     937/23611625     game::flip(int, int, int, int, int) [22]
+                0.00    0.00      28/29462       void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+                0.00    0.00      45/954936      game::removeRun(int, int, int, int) [35]
+                0.00    0.00    1032/26354959     game::performMove(moves, int) [37]
+                0.00    0.00     120/120         std::vector<moves, std::allocator<moves> >::operator=(std::vector<moves, std::allocator<moves> > const&) [62]
+                0.00    0.00      28/29462       void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [57]
+                0.00    0.00       5/36          game::insertRing(int, int, int) [65]
+-----------------------------------------------
+[14]     2.4    1.23    1.42     942+8429834 <cycle 1 as a whole> [14]
+                1.11    1.15  402755             AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.12    0.26 8028021             AI::maxValue(game, double, double, int) <cycle 1> [26]
+-----------------------------------------------
+                0.00    0.00     937/23611625     AI::makeDecision(game) [13]
+                0.00    0.04  401809/23611625     AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.08    0.80 8024481/23611625     AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.15    1.51 15184398/23611625     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[15]     2.4    0.24    2.35 23611625         game::moveRing(int, int, int, int) [15]
+                1.33    1.02 23611671/24566611     game::getDirection(int, int, int, int) [16]
+-----------------------------------------------
+                0.05    0.04  954940/24566611     game::removeRun(int, int, int, int) [35]
+                1.33    1.02 23611671/24566611     game::moveRing(int, int, int, int) [15]
+[16]     2.2    1.38    1.06 24566611         game::getDirection(int, int, int, int) [16]
+                0.31    0.00 21357159/33643935     game::get1(int, int) [23]
+                0.31    0.00 92812723/2523035865     game::get2(int, int) [10]
+                0.24    0.00 75903536/2504071650     game::get3(int, int) [11]
+                0.10    0.00 24566611/33242208     game::get0(int, int) [34]
+                0.10    0.00 37915092/2467294488     game::get4(int, int) [12]
+-----------------------------------------------
+                              401813             AI::maxValue(game, double, double, int) <cycle 1> [26]
+                1.23    1.42     942/942         AI::makeDecision(game) [13]
+[17]     2.1    1.11    1.15  402755         AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.08    0.80 8024481/23611625     game::moveRing(int, int, int, int) [15]
+                0.10    0.08 8024481/23611625     game::flip(int, int, int, int, int) [22]
+                0.00    0.07  668831/954936      game::removeRun(int, int, int, int) [35]
+                0.02    0.00 9362152/26354959     game::performMove(moves, int) [37]
+                0.00    0.00  402755/25154834     game::terminal() [39]
+                0.00    0.00     942/942         void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [60]
+                0.00    0.00     942/942         void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [59]
+                0.00    0.00       9/36          game::insertRing(int, int, int) [65]
+                             8028021             AI::maxValue(game, double, double, int) <cycle 1> [26]
+-----------------------------------------------
+                0.00    0.00      18/192882797     game::validMoves(int) [19]
+                0.00    0.00      94/192882797     convertToMyMove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [48]
+                0.00    0.00   71055/192882797     game::getRunSEUtil(int, int, int, int) [6]
+                0.00    0.00  141318/192882797     game::getRunSWUtil(int, int, int, int) [9]
+                0.01    0.00  609624/192882797     game::getRunDownUtil(int, int, int, int) [7]
+                0.02    0.00 2214850/192882797     game::validRemoveRing(int) [36]
+                0.05    0.00 5778027/192882797     game::getValid0(int, int) [33]
+                0.06    0.00 6871575/192882797     game::getValid1(int, int) [28]
+                0.06    0.00 7410288/192882797     game::getValid3(int, int) [29]
+                0.06    0.00 7489542/192882797     game::getValid2(int, int) [32]
+                0.07    0.00 8329041/192882797     game::getValid5(int, int) [31]
+                0.08    0.00 9674721/192882797     game::getValid4(int, int) [27]
+                1.20    0.00 144292644/192882797     game::get_features(int) [1]
+[18]     1.5    1.61    0.00 192882797         void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+-----------------------------------------------
+                0.26    1.27  441168/441168      allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[19]     1.4    0.26    1.27  441168         game::validMoves(int) [19]
+                0.11    0.15 1819424/1819424     game::getValid4(int, int) [27]
+                0.05    0.16 1819424/1819424     game::getValid1(int, int) [28]
+                0.09    0.11 1819424/1819424     game::getValid3(int, int) [29]
+                0.06    0.13 1819424/1819424     game::getValid5(int, int) [31]
+                0.06    0.12 1819424/1819424     game::getValid2(int, int) [32]
+                0.07    0.10 1819424/1819424     game::getValid0(int, int) [33]
+                0.06    0.00 10916544/142212408     void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+                0.00    0.00      18/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.00    0.00      18/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+-----------------------------------------------
+                0.06    0.00 10916544/142212408     game::validMoves(int) [19]
+                0.19    0.00 32823966/142212408     game::getRunSW(int) [8]
+                0.19    0.00 32823966/142212408     game::getRunDown(int) [5]
+                0.19    0.00 32823966/142212408     game::getRunSE(int) [4]
+                0.19    0.00 32823966/142212408     game::getRun(int) [3]
+[20]     0.7    0.82    0.00 142212408         void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag) [20]
+-----------------------------------------------
+                0.00    0.00      18/31738791     game::validMoves(int) [19]
+                0.00    0.00      34/31738791     convertToMyMove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [48]
+                0.00    0.00   23685/31738791     game::getRunSEUtil(int, int, int, int) [6]
+                0.00    0.00   47106/31738791     game::getRunSWUtil(int, int, int, int) [9]
+                0.00    0.00  203196/31738791     game::getRunDownUtil(int, int, int, int) [7]
+                0.02    0.00  937451/31738791     game::validRemoveRing(int) [36]
+                0.03    0.00 1843142/31738791     game::getValid0(int, int) [33]
+                0.03    0.00 2071570/31738791     game::getValid3(int, int) [29]
+                0.03    0.00 2079116/31738791     game::getValid1(int, int) [28]
+                0.04    0.00 2411298/31738791     game::getValid2(int, int) [32]
+                0.04    0.00 2593733/31738791     game::getValid5(int, int) [31]
+                0.05    0.00 2962602/31738791     game::getValid4(int, int) [27]
+                0.28    0.00 16565840/31738791     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[21]     0.5    0.53    0.00 31738791         void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                0.00    0.00     937/23611625     AI::makeDecision(game) [13]
+                0.00    0.00  401809/23611625     AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.10    0.08 8024481/23611625     AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.19    0.15 15184398/23611625     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[22]     0.5    0.29    0.24 23611625         game::flip(int, int, int, int, int) [22]
+                0.11    0.00 7802565/33643935     game::get1(int, int) [23]
+                0.03    0.00 11075986/2467294488     game::get4(int, int) [12]
+                0.03    0.00 8797139/2504071650     game::get3(int, int) [11]
+                0.03    0.00 8583620/13715282     game::get5(int, int) [38]
+                0.03    0.00 8410964/2523035865     game::get2(int, int) [10]
+                0.01    0.00 3209452/33242208     game::get0(int, int) [34]
+-----------------------------------------------
+                0.06    0.00 4484211/33643935     game::getValid1(int, int) [28]
+                0.11    0.00 7802565/33643935     game::flip(int, int, int, int, int) [22]
+                0.31    0.00 21357159/33643935     game::getDirection(int, int, int, int) [16]
+[23]     0.4    0.49    0.00 33643935         game::get1(int, int) [23]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.4    0.44    0.00                 void std::vector<int, std::allocator<int> >::emplace_back<int>(int&&) [24]
+-----------------------------------------------
+                                                 <spontaneous>
+[25]     0.4    0.41    0.00                 game::eval(int) [25]
+-----------------------------------------------
+                             8028021             AI::minValue(game, double, double, int) <cycle 1> [17]
+[26]     0.4    0.12    0.26 8028021         AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.19    0.00  822094/822663      void std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > >::_M_realloc_insert<std::pair<std::vector<moves, std::allocator<moves> >, double> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, std::pair<std::vector<moves, std::allocator<moves> >, double>&&) [30]
+                0.00    0.04  401809/23611625     game::moveRing(int, int, int, int) [15]
+                0.01    0.00   29434/29462       void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+                0.01    0.00 8028021/25154834     game::terminal() [39]
+                0.00    0.00  401809/23611625     game::flip(int, int, int, int, int) [22]
+                0.00    0.00   12061/954936      game::removeRun(int, int, int, int) [35]
+                0.00    0.00  425935/26354959     game::performMove(moves, int) [37]
+                0.00    0.00   29434/29462       void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [57]
+                0.00    0.00       4/36          game::insertRing(int, int, int) [65]
+                              401813             AI::minValue(game, double, double, int) <cycle 1> [17]
+-----------------------------------------------
+                0.11    0.15 1819424/1819424     game::validMoves(int) [19]
+[27]     0.2    0.11    0.15 1819424         game::getValid4(int, int) [27]
+                0.08    0.00 9674721/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.05    0.00 2962602/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.02    0.00 5926205/2467294488     game::get4(int, int) [12]
+-----------------------------------------------
+                0.05    0.16 1819424/1819424     game::validMoves(int) [19]
+[28]     0.2    0.05    0.16 1819424         game::getValid1(int, int) [28]
+                0.06    0.00 4484211/33643935     game::get1(int, int) [23]
+                0.06    0.00 6871575/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.03    0.00 2079116/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                0.09    0.11 1819424/1819424     game::validMoves(int) [19]
+[29]     0.2    0.09    0.11 1819424         game::getValid3(int, int) [29]
+                0.06    0.00 7410288/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.03    0.00 2071570/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.01    0.00 4214055/2504071650     game::get3(int, int) [11]
+                0.00    0.00  761124/33242208     game::get0(int, int) [34]
+-----------------------------------------------
+                0.00    0.00     569/822663      AI::makeDecision(game) [13]
+                0.19    0.00  822094/822663      AI::maxValue(game, double, double, int) <cycle 1> [26]
+[30]     0.2    0.19    0.00  822663         void std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > >::_M_realloc_insert<std::pair<std::vector<moves, std::allocator<moves> >, double> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, std::pair<std::vector<moves, std::allocator<moves> >, double>&&) [30]
+-----------------------------------------------
+                0.06    0.13 1819424/1819424     game::validMoves(int) [19]
+[31]     0.2    0.06    0.13 1819424         game::getValid5(int, int) [31]
+                0.07    0.00 8329041/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.04    0.00 2593733/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.02    0.00 5131662/13715282     game::get5(int, int) [38]
+-----------------------------------------------
+                0.06    0.12 1819424/1819424     game::validMoves(int) [19]
+[32]     0.2    0.06    0.12 1819424         game::getValid2(int, int) [32]
+                0.06    0.00 7489542/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.04    0.00 2411298/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.02    0.00 5157736/2523035865     game::get2(int, int) [10]
+-----------------------------------------------
+                0.07    0.10 1819424/1819424     game::validMoves(int) [19]
+[33]     0.2    0.07    0.10 1819424         game::getValid0(int, int) [33]
+                0.05    0.00 5778027/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.03    0.00 1843142/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.02    0.00 4705021/33242208     game::get0(int, int) [34]
+-----------------------------------------------
+                0.00    0.00  761124/33242208     game::getValid3(int, int) [29]
+                0.01    0.00 3209452/33242208     game::flip(int, int, int, int, int) [22]
+                0.02    0.00 4705021/33242208     game::getValid0(int, int) [33]
+                0.10    0.00 24566611/33242208     game::getDirection(int, int, int, int) [16]
+[34]     0.1    0.14    0.00 33242208         game::get0(int, int) [34]
+-----------------------------------------------
+                0.00    0.00      45/954936      AI::makeDecision(game) [13]
+                0.00    0.00   12061/954936      AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.00    0.03  273999/954936      allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+                0.00    0.07  668831/954936      AI::minValue(game, double, double, int) <cycle 1> [17]
+[35]     0.1    0.00    0.11  954936         game::removeRun(int, int, int, int) [35]
+                0.05    0.04  954940/24566611     game::getDirection(int, int, int, int) [16]
+                0.01    0.00 3155440/2504071650     game::get3(int, int) [11]
+                0.00    0.00  433028/2467294488     game::get4(int, int) [12]
+                0.00    0.00  231292/2523035865     game::get2(int, int) [10]
+-----------------------------------------------
+                0.05    0.03  273999/273999      allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[36]     0.1    0.05    0.03  273999         game::validRemoveRing(int) [36]
+                0.02    0.00 2214850/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.02    0.00  937451/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+-----------------------------------------------
+                0.00    0.00    1032/26354959     AI::makeDecision(game) [13]
+                0.00    0.00  425935/26354959     AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.02    0.00 9362152/26354959     AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.03    0.00 16565840/26354959     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[37]     0.0    0.05    0.00 26354959         game::performMove(moves, int) [37]
+-----------------------------------------------
+                0.02    0.00 5131662/13715282     game::getValid5(int, int) [31]
+                0.03    0.00 8583620/13715282     game::flip(int, int, int, int, int) [22]
+[38]     0.0    0.05    0.00 13715282         game::get5(int, int) [38]
+-----------------------------------------------
+                0.00    0.00  402755/25154834     AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.01    0.00 8028021/25154834     AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.02    0.00 16724058/25154834     allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[39]     0.0    0.03    0.00 25154834         game::terminal() [39]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.0    0.03    0.00                 std::vector<moves, std::allocator<moves> >::~vector() [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.0    0.03    0.00                 std::vector<int, std::allocator<int> >::~vector() [41]
+-----------------------------------------------
+                               95461             void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+                0.00    0.00      28/29462       AI::makeDecision(game) [13]
+                0.01    0.00   29434/29462       AI::maxValue(game, double, double, int) <cycle 1> [26]
+[42]     0.0    0.01    0.00   29462+95461   void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+                0.00    0.00   95461/95461       void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [56]
+                               95461             void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+-----------------------------------------------
+                                                 <spontaneous>
+[43]     0.0    0.01    0.00                 allvalidmoves::completeMove(int, game, std::vector<moves, std::allocator<moves> >) [43]
+-----------------------------------------------
+                                                 <spontaneous>
+[44]     0.0    0.01    0.00                 game::getRegion(int, int) [44]
+-----------------------------------------------
+                                                 <spontaneous>
+[45]     0.0    0.01    0.00                 std::map<std::tuple<int, int, int, int>, int, std::less<std::tuple<int, int, int, int> >, std::allocator<std::pair<std::tuple<int, int, int, int> const, int> > >::~map() [45]
+-----------------------------------------------
+                                                 <spontaneous>
+[46]     0.0    0.01    0.00                 markerScoreDownUtil(int, int, int, int) [46]
+-----------------------------------------------
+                                                 <spontaneous>
+[47]     0.0    0.01    0.00                 game::removeRing(int, int) [47]
+-----------------------------------------------
+                                                 <spontaneous>
+[48]     0.0    0.00    0.00                 convertToMyMove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [48]
+                0.00    0.00      94/192882797     void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&) [18]
+                0.00    0.00      34/31738791     void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&) [21]
+                0.00    0.00     110/110         void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [63]
+-----------------------------------------------
+                0.00    0.00   95461/95461       void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [42]
+[56]     0.0    0.00    0.00   95461         void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [56]
+-----------------------------------------------
+                0.00    0.00      28/29462       AI::makeDecision(game) [13]
+                0.00    0.00   29434/29462       AI::maxValue(game, double, double, int) <cycle 1> [26]
+[57]     0.0    0.00    0.00   29462         void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>) [57]
+-----------------------------------------------
+                0.00    0.00    2050/2050        void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [60]
+[58]     0.0    0.00    0.00    2050         void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [58]
+-----------------------------------------------
+                0.00    0.00     942/942         AI::minValue(game, double, double, int) <cycle 1> [17]
+[59]     0.0    0.00    0.00     942         void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [59]
+-----------------------------------------------
+                                2050             void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [60]
+                0.00    0.00     942/942         AI::minValue(game, double, double, int) <cycle 1> [17]
+[60]     0.0    0.00    0.00     942+2050    void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [60]
+                0.00    0.00    2050/2050        void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [58]
+                                2050             void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>) [60]
+-----------------------------------------------
+                0.00    0.00     141/141         convert_to_vector(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [66]
+[61]     0.0    0.00    0.00     141         void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&) [61]
+-----------------------------------------------
+                0.00    0.00     120/120         AI::makeDecision(game) [13]
+[62]     0.0    0.00    0.00     120         std::vector<moves, std::allocator<moves> >::operator=(std::vector<moves, std::allocator<moves> > const&) [62]
+-----------------------------------------------
+                0.00    0.00     110/110         convertToMyMove(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [48]
+[63]     0.0    0.00    0.00     110         void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) [63]
+-----------------------------------------------
+                0.00    0.00     108/108         convertTo[abi:cxx11](std::vector<moves, std::allocator<moves> >) [78]
+[64]     0.0    0.00    0.00     108         std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.194] [64]
+-----------------------------------------------
+                0.00    0.00       4/36          AI::maxValue(game, double, double, int) <cycle 1> [26]
+                0.00    0.00       5/36          AI::makeDecision(game) [13]
+                0.00    0.00       9/36          AI::minValue(game, double, double, int) <cycle 1> [17]
+                0.00    0.00      18/36          allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [2]
+[65]     0.0    0.00    0.00      36         game::insertRing(int, int, int) [65]
+-----------------------------------------------
+                0.00    0.00      33/33          init_diagonal() [77]
+[66]     0.0    0.00    0.00      33         convert_to_vector(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [66]
+                0.00    0.00     141/141         void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&) [61]
+-----------------------------------------------
+                0.00    0.00      15/15          init_diagonal() [77]
+[67]     0.0    0.00    0.00      15         void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >&&) [67]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[68]     0.0    0.00    0.00       1         _GLOBAL__sub_I__Z19markerScoreDownUtiliiii [68]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[69]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN2AIC2Ei [69]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[70]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4game10insertRingEiii [70]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[71]     0.0    0.00    0.00       1         _GLOBAL__sub_I__ZN4game10validMovesEi [71]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[72]     0.0    0.00    0.00       1         _GLOBAL__sub_I_direct [72]
+-----------------------------------------------
+                0.00    0.00       1/1           __libc_csu_init [111]
+[73]     0.0    0.00    0.00       1         _GLOBAL__sub_I_nom [73]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [68] _GLOBAL__sub_I__Z19markerScoreDownUtiliiii [36] game::validRemoveRing(int) [64] std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > __gnu_cxx::__to_xstring<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, char>(int (*)(char*, unsigned long, char const*, __va_list_tag*), unsigned long, char const*, ...) [clone .constprop.194]
+  [69] _GLOBAL__sub_I__ZN2AIC2Ei [25] game::eval(int)     [45] std::map<std::tuple<int, int, int, int>, int, std::less<std::tuple<int, int, int, int> >, std::allocator<std::pair<std::tuple<int, int, int, int> const, int> > >::~map()
+  [70] _GLOBAL__sub_I__ZN4game10insertRingEiii [22] game::flip(int, int, int, int, int) [20] void std::vector<moves, std::allocator<moves> >::_M_range_insert<__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > > >(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, __gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, std::forward_iterator_tag)
+  [71] _GLOBAL__sub_I__ZN4game10validMovesEi [34] game::get0(int, int) [21] void std::vector<moves, std::allocator<moves> >::_M_realloc_insert<moves const&>(__gnu_cxx::__normal_iterator<moves*, std::vector<moves, std::allocator<moves> > >, moves const&)
+  [72] _GLOBAL__sub_I_direct  [23] game::get1(int, int)   [40] std::vector<moves, std::allocator<moves> >::~vector()
+  [73] _GLOBAL__sub_I_nom     [10] game::get2(int, int)   [62] std::vector<moves, std::allocator<moves> >::operator=(std::vector<moves, std::allocator<moves> > const&)
+  [66] convert_to_vector(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >) [11] game::get3(int, int) [63] void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&>(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&)
+  [46] markerScoreDownUtil(int, int, int, int) [12] game::get4(int, int) [67] void std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > >::_M_realloc_insert<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >(__gnu_cxx::__normal_iterator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >*, std::vector<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >, std::allocator<std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > > > >, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >&&)
+   [2] allvalidmoves::getAllMoves(int, game, std::vector<moves, std::allocator<moves> >, bool) [38] game::get5(int, int) [30] void std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > >::_M_realloc_insert<std::pair<std::vector<moves, std::allocator<moves> >, double> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, std::pair<std::vector<moves, std::allocator<moves> >, double>&&)
+  [43] allvalidmoves::completeMove(int, game, std::vector<moves, std::allocator<moves> >) [3] game::getRun(int) [61] void std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > >::_M_realloc_insert<std::pair<int, int> >(__gnu_cxx::__normal_iterator<std::pair<int, int>*, std::vector<std::pair<int, int>, std::allocator<std::pair<int, int> > > >, std::pair<int, int>&&)
+  [26] AI::maxValue(game, double, double, int) [4] game::getRunSE(int) [24] void std::vector<int, std::allocator<int> >::emplace_back<int>(int&&)
+  [17] AI::minValue(game, double, double, int) [8] game::getRunSW(int) [18] void std::vector<int, std::allocator<int> >::_M_realloc_insert<int const&>(__gnu_cxx::__normal_iterator<int*, std::vector<int, std::allocator<int> > >, int const&)
+   [5] game::getRunDown(int)  [15] game::moveRing(int, int, int, int) [41] std::vector<int, std::allocator<int> >::~vector()
+  [65] game::insertRing(int, int, int) [39] game::terminal() [59] void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+  [47] game::removeRing(int, int) [44] game::getRegion(int, int) [57] void std::__insertion_sort<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+  [19] game::validMoves(int)  [33] game::getValid0(int, int) [60] void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+  [37] game::performMove(moves, int) [28] game::getValid1(int, int) [42] void std::__introsort_loop<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, long, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+  [16] game::getDirection(int, int, int, int) [32] game::getValid2(int, int) [58] void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_dec>)
+   [6] game::getRunSEUtil(int, int, int, int) [29] game::getValid3(int, int) [56] void std::__move_median_to_first<__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc> >(__gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__normal_iterator<std::pair<std::vector<moves, std::allocator<moves> >, double>*, std::vector<std::pair<std::vector<moves, std::allocator<moves> >, double>, std::allocator<std::pair<std::vector<moves, std::allocator<moves> >, double> > > >, __gnu_cxx::__ops::_Iter_comp_iter<sort_inc>)
+   [9] game::getRunSWUtil(int, int, int, int) [27] game::getValid4(int, int) [14] <cycle 1>
+   [1] game::get_features(int) [31] game::getValid5(int, int)
+   [7] game::getRunDownUtil(int, int, int, int) [35] game::removeRun(int, int, int, int)

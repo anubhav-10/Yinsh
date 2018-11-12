@@ -425,15 +425,130 @@ vector<moves> game::validRemoveRing(int player){
 	return ans;
 }
 
-vector<moves> game::getRun(int player){
-	vector<moves> ans,v;
-	ans=getRunDown(player);
-	v=getRunSE(player);
-	ans.insert(ans.end(),v.begin(),v.end());
-	v=getRunSW(player);
-	ans.insert(ans.end(),v.begin(),v.end());
+// vector<moves> game::getRun(int player){
+// 	vector<moves> ans,v;
+// 	ans=getRunDown(player);
+// 	v=getRunSE(player);
+// 	ans.insert(ans.end(),v.begin(),v.end());
+// 	v=getRunSW(player);
+// 	ans.insert(ans.end(),v.begin(),v.end());
 
-	return ans;
+// 	return ans;
+// }
+vector<moves> game::getRun(int id){
+	vector<moves> ret;
+
+	vector<pair<int, int>> v;
+	int myMarker = (id==1)?3:4;
+	int start = 0, x1 = -1, x2 = -1, y1 = -1, y2 = -1, count = 0;
+	for(auto v: vertical){
+		// v = vertical[*itr];
+		x1 = v[0].first;
+		y1 = v[0].second;
+		count = 0;
+		for(int i=0;i<v.size();i++){
+			x2 = v[i].first;
+			y2 = v[i].second;
+			if(!count){
+				x1 = x2;
+				y1 = y2;
+				start = i;
+			}
+			if(state[x2][y2] == myMarker){
+				count++;
+			}
+			else{
+				count = 0;
+			}
+
+			if (count == nom){
+				moves temp;
+				temp.type = RemoveRun;
+				temp.coord = {x1, y1, x2, y2};
+				ret.pb(temp);
+				x1 = v[start+1].first;
+				y1 = v[start+1].second;
+				start++;
+				count--;
+			}
+		}
+	}
+
+	start = 0; x1 = -1; x2 = -1; y1 = -1; y2 = -1; count = 0;
+	for(auto v: diagonal1){
+		// v = m->diagonal1[*itr];
+		x1 = v[0].first;
+		y1 = v[0].second;
+		count = 0;
+		for(int i=0;i<v.size();i++){
+			x2 = v[i].first;
+			y2 = v[i].second;
+			if(!count){
+				x1 = x2;
+				y1 = y2;
+				start = i;
+			}
+			if(state[x2][y2] == myMarker){
+				count++;
+			}
+			else{
+				count = 0;
+			}
+
+			if (count == nom){
+				moves temp;
+				temp.type = RemoveRun;
+				temp.coord = {x1, y1, x2, y2};
+				ret.pb(temp);
+				x1 = v[start+1].first;
+				y1 = v[start+1].second;
+				start++;
+				count--;
+			}
+		}
+	}
+
+	start = 0; x1 = -1; x2 = -1; y1 = -1; y2 = -1; count = 0;
+	for(auto v: diagonal2){
+		// v = m->diagonal2[*itr];
+		x1 = v[0].first;
+		y1 = v[0].second;
+		count = 0;
+		for(int i=0;i<v.size();i++){
+			x2 = v[i].first;
+			y2 = v[i].second;
+			if(!count){
+				x1 = x2;
+				y1 = y2;
+				start = i;
+			}
+			if(state[x2][y2] == myMarker){
+				count++;
+			}
+			else{
+				count = 0;
+			}
+
+			if (count == nom){
+				moves temp;
+				temp.type = RemoveRun;
+				temp.coord = {x1, y1, x2, y2};
+				ret.pb(temp);
+				x1 = v[start+1].first;
+				y1 = v[start+1].second;
+				start++;
+				count--;
+			}
+		}
+	}
+	// for(auto u: ret){
+	// 	cout<<(u.type)<<" ";
+	// 	for(auto v: u.coord)
+	// 		cout<<(v)<<" ";
+	// 	cout<<endl;
+	// }
+
+	return ret;
 }
 
 vector<moves> game::getRunDown(int player){

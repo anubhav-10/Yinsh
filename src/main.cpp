@@ -7,7 +7,7 @@ using namespace std;
 int nom, nor;
 vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
 //							1		2	3	4	5		6		7		8				9		10	 11	   12	13		14		15		16			17				
-vector<double> weights1 {100000000, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, -100000000, -1, -10, -100, -1000, -10000, -100000, -1000000, -10000000, -10000};
+vector<double> weights1 {100000000, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 5000000, -100000000, -1, -10, -100, -1000, -10000, -100000, -1000000, -10000000, -5000000, -100000};
 vector<int> final_features_value;
 
 vector<pair<int,int>> convert_to_vector(string s){
@@ -58,14 +58,6 @@ void init_diagonal(){
             diagonal2.pb(convert_to_vector(line));
         }
         file3.close();
-
-        // cout<<diagonal2.size()<<endl;
-        // for(auto u: diagonal2){
-        //     for(auto v: u){
-        //         cout<< v.first<<" "<<v.second<<" ";
-        //     }
-        //     cout<<endl;
-        // }
     }
     else{
         ifstream file1("vert6");
@@ -89,14 +81,6 @@ void init_diagonal(){
             diagonal2.pb(convert_to_vector(line));
         }
         file3.close();
-
-        // cout<<vertical.size()<<endl;
-        // for(auto u: vertical){
-        //     for(auto v: u){
-        //         cout<< v.first<<" "<<v.second<<" ";
-        //     }
-        //     cout<<endl;
-        // }
     }
 
     // weights1 = {}
@@ -210,6 +194,7 @@ string convertTo(vector<moves> v){
 int main(int argc, char const *argv[])
 {
 	no_of_moves=0;
+	// cerr << weights1.size() <<endl;
 	// game temp;
 	// temp.initialize();
 	int id,n,t,k;

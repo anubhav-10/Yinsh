@@ -1,7 +1,7 @@
 IDIR =./include 
 CXX=g++ 
 CC=gcc
-CXXFLAGS= -I$(IDIR) -g -std=c++14 -w -O3
+CXXFLAGS= -I$(IDIR) -std=c++14 -w -O3
 
 SRCDIR=./src
 ODIR=./obj
@@ -21,11 +21,11 @@ $(ODIR)/%.o: $(SRCDIR)/%.cpp
 
 $(TARGET): $(OBJ)
 	@echo "\n Linking ...." 
-	g++ -o $@ $^ $(CXXFLAGS)
+	g++ -o $@ $^ $(CXXFLAGS) 
 
 
 .PHONY: clean
 
 clean:
 	@echo "Cleaning ....";
-	rm -rf $(ODIR) 
+	rm -f $(ODIR)/*.o main

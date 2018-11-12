@@ -28,7 +28,6 @@ struct sort_dec{
 vector<moves> AI::makeDecision(game g){
 	int depth = 2;
 	// no_of_moves++;
-	cerr<<depth<<endl;
 	double resultValue=INT_MIN;
 	vector<moves> result;
 	game result_state;
@@ -36,6 +35,17 @@ vector<moves> AI::makeDecision(game g){
 	vector<moves> v;
 	vector<vector<moves>> allMoves;
 	p.getAllMoves(id,g,v,0);
+	int num_moves = p.allMoves.size();
+
+	if (num_moves == 1) {
+		return p.allMoves[0].first;
+	}
+	if (num_moves > 80) depth = 1;
+	if (num_moves < 70) depth = 2;
+	if (num_moves < 50) depth = 2;
+	if (num_moves < 25) depth = 3;
+	if (num_moves < 12) depth = 4;
+	cerr<<"Depth: "<<depth<<" NOM:"<<num_moves<<'\n';
 
 	// vector<pair<game, double>> sorted;
 	// for(int i=0;i<p.allMoves.size();i++){
