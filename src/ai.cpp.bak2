@@ -34,31 +34,47 @@ vector<moves> AI::makeDecision(game g){
 	game result_state;
 	allvalidmoves p;
 	vector<moves> v;
-	vector<vector<moves>> allMoves;
-	p.getAllMoves(id,g,v,0);
 
-	// vector<pair<game, double>> sorted;
-	// for(int i=0;i<p.allMoves.size();i++){
-	// 	sorted.pb({p.allMoves[i].second, p.allMoves[i].second.eval(id)});
-	// }
-	sort(p.allMoves.begin(), p.allMoves.end(), sort_inc());
-	// cout<<p.allMoves.size()<<endl;
-	for(int i=0;i<p.allMoves.size();i++){
-		game b=g;
-		for(int j=0;j<p.allMoves[i].first.size();j++){
-			b.performMove(p.allMoves[i].first[j],id);
+	vector<moves> runs = g.getRun(id);
+	if(runs.size() != 0){
+		p.getAllMoves(id,g,v,0);
+		sort(p.allMoves.begin(), p.allMoves.end(), sort_inc());
+		for(int i=0;i<p.allMoves.size();i++){
+			game b=g;
+			for(int j=0;j<p.allMoves[i].first.size();j++){
+				b.performMove(p.allMoves[i].first[j],id);
+			}
+			double value=minValue(b,INT_MIN,numeric_limits<double>::max(),depth);
+			if(value > resultValue){
+				resultValue = value;
+				result_state = b;
+				result = p.allMoves[i].first;
+				final_features_value = features;
+			}
 		}
-		double value=minValue(b,INT_MIN,numeric_limits<double>::max(),depth);
-		// cerr<<value<<endl;
-		if(value > resultValue){
-			resultValue = value;
-			// result_state = b;
-			result = p.allMoves[i].first;
-			final_features_value = features;
+	}
+	else{
+		vector<moves> possiblesMoves  = g.validMoves(id);
+		vector<pair<vector<moves>, double>> res;
+		for(int i=0;i<possiblesMoves.size();i++){
+			vector<moves> temp, store_moves;
+			store_moves.pb(possiblesMoves[i]);
+			game b = g;
+			b.performMove(possiblesMoves[i], id);
+			allvalidmoves q;
+			q.getAllMoves(id, b, temp, 1);
+
+			for(int j=0;j<q.allMoves.size();j++){
+				game c = b;
+				for(int k = 0; k < q.allMoves[j].first.size(); k++)
+					c.performMove(q.allMoves[i].first[j], id);
+				store_moves.insert(store_moves.end(), q.allMoves[j].first.begin(), q.allMoves[j].first.end());
+			}
+			// res.pb({store_moves})
 		}
 	}
 	// cout<<result.size()<<endl;
-	return (result);
+	return result;
 }
 
 double AI::maxValue(game g,double alpha,double beta,int depth){

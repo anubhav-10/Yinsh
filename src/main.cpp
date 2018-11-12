@@ -6,7 +6,8 @@
 using namespace std;
 int nom, nor;
 vector<vector<pair<int,int>>> vertical, diagonal1, diagonal2;
-vector<double> weights1 {100000000, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000 -100000000, -1, -10, -100, -1000, -10000, -100000, -1000000, -10000};
+//							1		2	3	4	5		6		7		8				9		10	 11	   12	13		14		15		16			17				
+vector<double> weights1 {100000000, 1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, -100000000, -1, -10, -100, -1000, -10000, -100000, -1000000, -10000000, -10000};
 vector<int> final_features_value;
 
 vector<pair<int,int>> convert_to_vector(string s){
@@ -244,62 +245,11 @@ int main(int argc, char const *argv[])
 			cerr << "Sucess exit"<<endl;
 			break;
 		}
-		pair<vector<moves>,game> z= player.makeDecision(g);
-		cout<<convertTo(z.first)<<endl;
+		vector<moves> z= player.makeDecision(g);
+		cout<<convertTo(z)<<endl;
+		for(int i=0;i<z.size();i++)
+			g.performMove(z[i], id);
 
-		// double reward = 0;
-		// if(id == 1){
-		// 	reward += z.second.removedWhite - g.removedWhite;
-		// 	reward += g.removedBlack - z.second.removedBlack;
-		// 	if(z.second.removedWhite == 3){
-		// 		reward = 10;
-		// 	}
-		// 	if(z.second.removedBlack == 3){
-		// 		reward = -10;
-		// 	}
-		// }
-		// else{
-		// 	reward += z.second.removedBlack - g.removedBlack;
-		// 	reward += g.removedWhite - z.second.removedWhite;
-		// 	if(z.second.removedWhite == 3){
-		// 		reward = -10;
-		// 	}
-		// 	if(z.second.removedBlack == 3){
-		// 		reward = 10;
-		// 	}
-		// }
-
-
-		g = z.second;
-
-		// if(g.terminal()){
-		// 	if(id == 1 && g.removedWhite == 3)
-		// 		reward = 10;
-		// 	else if(id == 1 && g.removedBlack == 3)
-		// 		reward = -10;
-
-		// 	if(id == 2 && g.removedBlack == 3)
-		// 		reward = 10;
-		// 	else if(id == 2 && g.removedWhite == 3)
-		// 		reward = -10;
-	
-		// 	for(auto u: final_features_value){
-		// 		write << u << " ";
-		// 	}
-		// 	write << reward << endl;
-
-		// }
-
-		// write << g.removedWhite << " " << g.removedBlack << " ";
-
-		// cerr << g.removedWhite << " " << g.removedBlack << " ";
-	
-		// for(auto u: final_features_value){
-		// 	write << u << " ";
-		// 	cerr << u <<  " ";
-		// }
-		// write << reward << endl;
-		// cerr << reward <<endl;
 
 		if(g.terminal()){
 			cerr << "Sucess exit"<<endl;
@@ -348,3 +298,101 @@ int main(int argc, char const *argv[])
 
 	return 0;
 }
+
+// int main(){
+// 	nor = 5;
+// 	game g;
+// 	init_diagonal();
+// 	g.print();
+// 	g.insertRing(2,1,1);
+// 	g.insertRing(4,22,1);
+// 	g.insertRing(1,3,1);
+// 	g.insertRing(1,5,1);
+// 	g.insertRing(0, 0, 1);
+// 	g.insertRing(2, 4, 2);
+// 	// g.print();
+// 	// moves m;
+// 	// m.type = Place;
+// 	// m.coord = {2, 4};
+// 	// g.undoMove(m, 2);
+// 	// g.print();
+
+// 	g.insertRing(2,0,2);
+// 	g.insertRing(2,2,2);
+// 	g.insertRing(1,4,2);
+// 	g.insertRing(5,18,2);
+
+
+// 	g.placeMarker(1,0,3);
+// 	g.placeMarker(2,11,3);
+// 	g.placeMarker(3,16,3);
+// 	g.placeMarker(1,1,3);
+// 	g.placeMarker(2,3,3);
+// 	moves m;
+// 	m.type = Move;
+// 	m.coord = {1,5,2,1};
+// 	g.performMove(m, 1);
+// 	g.print();
+// 	g.undoMove(m, 1);
+// 	g.print();
+
+// 	// g.placeMarker(5,3,3);
+// 	// g.placeMarker(5,4,3);
+	
+// 	// g.placeMarker(4,3,3);
+// 	// g.placeMarker(4,4,3);
+// 	// g.placeMarker(5,6,3);
+
+// 	// g.placeMarker(5,7,3);
+
+// 	// g.placeMarker(3,4,3);
+// 	// g.placeMarker(5,8,3);
+
+// 	// g.placeMarker(4,7,3);
+// 	// g.placeMarker(5,9,3);
+
+// 	// g.placeMarker(2,4,3);
+// 	// g.placeMarker(4,8,3);
+
+// 	// g.placeMarker(3,7,3);
+// 	// g.placeMarker(4,9,3);
+// 	// g.placeMarker(5,11,3);
+
+// 	// g.placeMarker(5,12,3);
+// 	// g.placeMarker(5,13,3);
+// 	// g.placeMarker(5,14,3);
+
+// 	// g.placeMarker(5,29,4);
+// 	// g.placeMarker(4,22,4);
+// 	// g.placeMarker(3,16,4);
+// 	// g.placeMarker(2,7,4);
+// 	// g.placeMarker(3,10,4);
+
+// 	// g.placeMarker(4,0,4);
+// 	// g.placeMarker(4,12,4);
+
+// 	// g.placeMarker(5,1,4);
+// 	// g.placeMarker(1,1,4);
+// 	// g.placeMarker(1,2,4);
+// 	// g.placeMarker(2,5,4);
+// 	// g.placeMarker(3,8,4);
+// 	// g.placeMarker(4,11,4);
+
+// 	// g.placeMarker(5,2,4);
+// 	// g.placeMarker(4,2,4);
+// 	// g.placeMarker(3,2,4);
+// 	// g.placeMarker(2,3,4);
+// 	// g.placeMarker(4,10,4);
+
+// 	// g.placeMarker(3,3,4);
+// 	// g.placeMarker(3,5,4);
+// 	// g.placeMarker(3,6,4);
+
+// 	// g.placeMarker(4,5,4);
+// 	// g.placeMarker(4,6,4);
+
+// 	// g.insertRing(4,16,1);
+// 	// g.removeRing(4,16);
+// 	// g.insertRing(5,25,2);
+// // g.removeRing(5,25);	
+// }

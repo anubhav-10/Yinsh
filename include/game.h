@@ -29,6 +29,12 @@ class game{
 		void removeRun(int sx,int sy,int ex,int ey); // for executing opponent's move
 		bool terminal();
 		void performMove(moves m,int player);
+		void undoMove(moves m, int player);
+
+		void unmove(int player, int sx, int sy, int ex, int ey);
+		void placeRun(int player, int sx, int sy, int ex, int ey);
+		void reinsertring(int player, int x, int y);
+		void unplace(int player, int x, int y);
 		// Auxiliary functions
 		void flip(int sx,int sy,int ex,int ey,int direction);
 		int getDirection(int sx,int sy,int ex,int ey);

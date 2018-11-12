@@ -18,11 +18,12 @@ vector<int> game::get_features(int player){
     int black_marker = 4;
     int count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0;
     bool b1 = 0, b2 = 0, b3 = 0, b4 = 0;
+    int c1 = 0, c2 = 0, m3r2_1 = 0, m3r2_2 = 0;
     // int k1 = k;
     for(auto u: vertical){
         count = 0;
-        count1 = 0; count2 = 0; count3 = 0, count4 = 0;
-        b1 = 0; b2 = 0;
+        count1 = 0; count2 = 0; count3 = 0; count4 = 0; count5 = 0;
+        b1 = 0; b2 = 0; c1 = 0; c2 = 0;
         for(auto v: u){
 	        // k markers in row
             x = v.first;
@@ -81,14 +82,44 @@ vector<int> game::get_features(int player){
             if(count3 == nom){
             	r_m_2++;
             }
+
+            // 3 m's and 2 r's // mine
+            if(state[x][y] == mymarker){
+            	count4++;
+            }
+            else if(state[x][y] == player && c1<2){
+            	count4++;
+            	c1 += 1;
+            }
+            else{
+            	count4 = 0;
+            	c1 = 0;
+            }
+            if(count4 == nom && c1 == 2){
+            	m3r2_1++;
+            }
+            // 3 m's and 2 r's // opponent
+            if(state[x][y] == oppmarker){
+            	count5++;
+            }
+            else if(state[x][y] == opponent && c2<2){
+            	count5++;
+            	c2 += 1;
+            }
+            else{
+            	count5 = 0;
+            	c2 = 0;
+            }
+            if(count5 == nom && c2 == 2){
+            	m3r2_2++;
+            }
         }
     }
 
     for(auto u: diagonal1){
         count = 0;
-        count1 = 0;
-        count1 = 0; count2 = 0; count3 = 0;
-        b1 = 0; b2 = 0;
+        count1 = 0; count2 = 0; count3 = 0; count4 = 0; count5 = 0;
+        b1 = 0; b2 = 0; c1 = 0; c2 = 0;
         for(auto v: u){	
         	// k markers in row
             x = v.first;
@@ -148,14 +179,44 @@ vector<int> game::get_features(int player){
             if(count3 == nom){
             	r_m_2++;
             }
+
+            // 3 m's and 2 r's // mine
+            if(state[x][y] == mymarker){
+            	count4++;
+            }
+            else if(state[x][y] == player && c1<2){
+            	count4++;
+            	c1 += 1;
+            }
+            else{
+            	count4 = 0;
+            	c1 = 0;
+            }
+            if(count4 == nom && c1 == 2){
+            	m3r2_1++;
+            }
+            // 3 m's and 2 r's // opponent
+            if(state[x][y] == oppmarker){
+            	count5++;
+            }
+            else if(state[x][y] == opponent && c2<2){
+            	count5++;
+            	c2 += 1;
+            }
+            else{
+            	count5 = 0;
+            	c2 = 0;
+            }
+            if(count5 == nom && c2 == 2){
+            	m3r2_2++;
+            }
         }
     }
 
     for(auto u: diagonal2){
         count = 0;
-        count1 = 0;
-        count1 = 0; count2 = 0; count3 = 0;
-        b1 = 0; b2 = 0;
+        count1 = 0; count2 = 0; count3 = 0; count4 = 0; count5 = 0;
+        b1 = 0; b2 = 0; c1 = 0; c2 = 0;
         for(auto v: u){
         	// k markers in row
             x = v.first;
@@ -215,6 +276,37 @@ vector<int> game::get_features(int player){
             if(count3 == nom){
             	r_m_2++;
             }
+
+            // 3 m's and 2 r's // mine
+            if(state[x][y] == mymarker){
+            	count4++;
+            }
+            else if(state[x][y] == player && c1<2){
+            	count4++;
+            	c1 += 1;
+            }
+            else{
+            	count4 = 0;
+            	c1 = 0;
+            }
+            if(count4 == nom && c1 == 2){
+            	m3r2_1++;
+            }
+            // 3 m's and 2 r's // opponent
+            if(state[x][y] == oppmarker){
+            	count5++;
+            }
+            else if(state[x][y] == opponent && c2<2){
+            	count5++;
+            	c2 += 1;
+            }
+            else{
+            	count5 = 0;
+            	c2 = 0;
+            }
+            if(count5 == nom && c2 == 2){
+            	m3r2_2++;
+            }
         }
     }
     vector<int> ret;
@@ -227,6 +319,7 @@ vector<int> game::get_features(int player){
     for(int i=0;i<6;i++)
     	ret.pb(s1[i]);
 	ret.pb(r_m_1);    
+	ret.pb(m3r2_1);
 	if(player == 1){
     	ret.pb((1)*removedBlack);		
 	}
@@ -236,6 +329,7 @@ vector<int> game::get_features(int player){
     for(int i=0;i<6;i++)
     	ret.pb((1)*s2[i]);
     ret.pb(r_m_2);
+    ret.pb(m3r2_2);
     // }
     // else{
     // 	ret.pb(removedBlack);
@@ -251,9 +345,10 @@ vector<int> game::get_features(int player){
 double game::eval(int player){
 	features = get_features(player);
 
+	// cerr << weights1[15]<<endl;
 	double ret = 0;
 	// if(player == 1){
-		for(int i=0;i<16;i++)
+		for(int i=0;i<18;i++)
 			ret += features[i] * weights1[i];
 	// }
 	// else{

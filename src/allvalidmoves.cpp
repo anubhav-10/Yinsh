@@ -42,6 +42,37 @@ void allvalidmoves::getAllMoves(int player,game g,vector<moves> v,bool moveMade)
 	}
 }
 
+void allvalidmoves::completeMove(int player, game g, vector<moves> v){
+	if(g.terminal()){
+		complete.pb({v, g.eval(player)});
+		cerr << "sucess return " << endl;
+		return;
+	}
+	cerr << "entered" << endl;
+	vector<moves> runs=g.getRun(player);
+	cerr << "found runs" << endl;
+	for(int i=0;i<runs.size();i++){
+		game a=g;
+		a.performMove(runs[i],player);
+		cerr << "run removes " << endl;
+		vector<moves> b=v;
+		b.pb(runs[i]);
+		vector<moves> removes=a.validRemoveRing(player);
+		cerr << "found removes rings " << endl;
+		for(int j=0;j<removes.size();j++){
+			game c=a;
+			c.performMove(removes[j],player);
+			cerr << "rings removes " << endl;
+			vector<moves> d=b;
+			d.pb(removes[j]);
+			completeMove(player, c, d);
+		}
+	}
+	if(runs.size()>0){
+		return;
+	}	
+}
+
 void allvalidmoves::print(){
 	cout<<allMoves.size()<<endl;
 	for(int i=0;i<allMoves.size();i++){
