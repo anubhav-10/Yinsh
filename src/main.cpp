@@ -37,22 +37,22 @@ vector<pair<int,int>> convert_to_vector(string s){
 void init_diagonal(){
     string line;
     if(nor==5){
-        ifstream file1("vert5");
+        ifstream file1("static/vert5");
         while (getline(file1, line)){
             // cout<<line<<endl;
             vertical.pb(convert_to_vector(line));
         }
         file1.close();
 
-        // freopen("diag15","r",stdin);
-        ifstream file2("diag15");
+        // freopen("static/diag15","r",stdin);
+        ifstream file2("static/diag15");
         while (getline(file2, line)){
             // cout<<line<<endl;
             diagonal1.pb(convert_to_vector(line));
         }
         file2.close();
 
-        ifstream file3("diag25");
+        ifstream file3("static/diag25");
         while (getline(file3, line)){
             // cout<<line<<endl;
             diagonal2.pb(convert_to_vector(line));
@@ -60,7 +60,7 @@ void init_diagonal(){
         file3.close();
     }
     else{
-        ifstream file1("vert6");
+        ifstream file1("static/vert6");
         while (getline(file1, line)){
             // cout<<line<<endl;
             vertical.pb(convert_to_vector(line));
@@ -68,14 +68,14 @@ void init_diagonal(){
         file1.close();
 
         // freopen("diag15","r",stdin);
-        ifstream file2("diag16");
+        ifstream file2("static/diag16");
         while (getline(file2, line)){
             // cout<<line<<endl;
             diagonal1.pb(convert_to_vector(line));
         }
         file2.close();
 
-        ifstream file3("diag26");
+        ifstream file3("static/diag26");
         while (getline(file3, line)){
             // cout<<line<<endl;
             diagonal2.pb(convert_to_vector(line));
